@@ -47,14 +47,12 @@ public class MainActivity extends AppCompatActivity {
         wb.setWebViewClient(new Callback());
 
 
-
-
     }
 
     private void ScanCode() {
 
         ScanOptions options = new ScanOptions();
-        options.setPrompt("Volum up to flash on");
+        options.setPrompt("Volume up to flash on");
         options.setOrientationLocked(true);
         options.setCaptureActivity(CaptureAct.class);
         barLauncher.launch(options);
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
              {
 
                  if (result.getContents().equalsIgnoreCase("I Love You")){
-                     wb.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSeI6Bn4uw6B6y7fgr0OYIVtmnJkZ73WdFh4ESILuE1DBDa8CA/viewform?usp=pp_url");
+                     wb.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSfw4oBbMQQcEZzch9NqbE_A6BZRyW4jqfzx2bURRWsKK_cyOA/viewform?usp=sf_link ");
                      bonafide.setVisibility(View.GONE);
                  }
                  else {
