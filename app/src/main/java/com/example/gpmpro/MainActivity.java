@@ -64,22 +64,14 @@ public class MainActivity extends AppCompatActivity {
              {
 
                  if (result.getContents().equalsIgnoreCase("I Love You")){
-                     wb.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSfw4oBbMQQcEZzch9NqbE_A6BZRyW4jqfzx2bURRWsKK_cyOA/viewform?usp=sf_link ");
-                     bonafide.setVisibility(View.GONE);
+//                     wb.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSfw4oBbMQQcEZzch9NqbE_A6BZRyW4jqfzx2bURRWsKK_cyOA/viewform?usp=sf_link ");
+//                     bonafide.setVisibility(View.GONE);
+
                  }
                  else {
                      Toast.makeText(this, "Wrong QR Code", Toast.LENGTH_SHORT).show();
                  }
 
-//                 AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
-//                 builder.setTitle("Result");
-//                 builder.setMessage(result.getContents());
-//                 builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-//                     @Override
-//                     public void onClick(DialogInterface dialogInterface, int i) {
-//                         dialogInterface.dismiss();
-//                     }
-//                 }).show();
 
              }
     });
