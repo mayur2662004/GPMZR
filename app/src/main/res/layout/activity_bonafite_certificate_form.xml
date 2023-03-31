@@ -43,8 +43,7 @@
         android:layout_marginTop="10dp">
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/gpm_logo"/>
+            android:layout_height="100dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -311,4 +310,3 @@
     </ScrollView>
 
 </LinearLayout>
->>>>>>> 28b104ebacddeb1525890827916aeeba6c71694d
