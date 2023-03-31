@@ -1,9 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BonafiteCertificateForm">
+    tools:context=".BonafiteCertificateForm"
+    android:orientation="vertical"
+    android:background="#EFE7E7">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_form_page"
+        android:textColor="#D50F08"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:textSize="24dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Goverment Polytechnic Murtizapur"
+        android:fontFamily="sans-serif-black"
+        />
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:id="@+id/rela_layout">-->
+
+    <!--        <ImageView-->
+    <!--            android:layout_width="100dp"-->
+    <!--            android:layout_height="100dp"-->
+    <!--            android:src="@drawable/gpm_logo"-->
+    <!--            android:layout_centerVertical="true"-->
+    <!--            android:layout_centerHorizontal="true"/>-->
+    <!--    </RelativeLayout>-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logo_linear_layout"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/gpm_logo"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_of_application_of_bonafite_form_page"
+            android:textColor="#BF4A45"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_gravity="center_vertical"
+            android:text="Application Form
+                           Of Bonafite Certificate "
+            android:fontFamily="sans-serif-black"
+            />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_name_of_stud"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Et_name_of_stud"
+                    android:hint="First Name"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_name_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="300dp"
+                    android:text="Clear"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_delete_24"
+                    android:textColor="#BF4A45"
+                    android:textSize="20dp" />
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_name_of_middle"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Et_name_of_middle"
+                    android:hint="Middle Name"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_middle_clear"
+                    android:text="Clear"
+                    android:textSize="20dp"
+                    android:textColor="#BF4A45"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="280dp"/>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_name_of_last"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Et_name_of_last"
+                    android:hint="Last Name"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_last_clear"
+                    android:text="Clear"
+                    android:textSize="20dp"
+                    android:textColor="#BF4A45"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="280dp"/>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_Enrollment_num"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Et_enroll_num"
+                    android:hint="Enrollment Number"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_enroll_num"
+                    android:text="Clear"
+                    android:textSize="20dp"
+                    android:textColor="#BF4A45"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="280dp"/>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_Branch"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp">
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center_horizontal">
+                    <RadioButton android:id="@+id/radio_co"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CO"
+                        android:layout_marginRight="10dp"/>
+                    <RadioButton android:id="@+id/radio_it"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IT"
+                        android:layout_marginRight="10dp"
+                        />
+                    <RadioButton android:id="@+id/radio_Mech"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ME"
+                        android:layout_marginRight="10dp"/>
+                    <RadioButton android:id="@+id/radio_ele"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EE"
+                        android:layout_marginRight="10dp"/>
+
+                    <RadioButton android:id="@+id/radio_civil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CE"
+                        android:layout_marginRight="10dp"/>
+                </RadioGroup>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_Branch"
+                    android:text="Clear"
+                    android:textSize="20dp"
+                    android:textColor="#BF4A45"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="280dp"/>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_sub"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Et_sub"
+                    android:hint="Subject"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_sub"
+                    android:text="Clear"
+                    android:textSize="20dp"
+                    android:textColor="#BF4A45"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="280dp"/>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_upload"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Et_upload_file"
+                    android:hint="Upload Files"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_upload"
+                    android:text="Clear"
+                    android:textSize="20dp"
+                    android:textColor="#BF4A45"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="280dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
