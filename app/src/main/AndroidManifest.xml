@@ -19,7 +19,7 @@
             android:name=".LeavingCertificateForm"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Scan_activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
