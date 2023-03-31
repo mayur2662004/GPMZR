@@ -95,7 +95,7 @@
                     android:layout_marginLeft="300dp"
                     android:text="Clear"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_delete_24"
+
                     android:textColor="#BF4A45"
                     android:textSize="20dp" />
 
