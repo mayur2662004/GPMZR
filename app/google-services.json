@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "47505810560",
+    "firebase_url": "https://murtizapur-worker-default-rtdb.firebaseio.com",
+    "project_id": "murtizapur-worker",
+    "storage_bucket": "murtizapur-worker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47505810560:android:adee2b91c3ccd9d741b265",
+        "android_client_info": {
+          "package_name": "com.example.gpmpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47505810560-df8dod3fgs66d62ljioni122jrjsi67d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS5fDs-DmjykzXj0aXkmNdLRJO2kFRF2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47505810560-df8dod3fgs66d62ljioni122jrjsi67d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47505810560:android:223bab51830a397841b265",
+        "android_client_info": {
+          "package_name": "com.gsontechnology.mzrworker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47505810560-df8dod3fgs66d62ljioni122jrjsi67d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS5fDs-DmjykzXj0aXkmNdLRJO2kFRF2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47505810560-df8dod3fgs66d62ljioni122jrjsi67d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
