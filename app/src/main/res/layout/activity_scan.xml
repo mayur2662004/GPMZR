@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Scan_activity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/bonafide"
@@ -25,7 +25,7 @@
             <ImageView
                 android:layout_width="80sp"
                 android:layout_height="80sp"
-                android:src="@drawable/scan"/>
+                android:src="@drawable/scan" />
 
             <TextView
                 android:layout_width="wrap_content"
