@@ -57,6 +57,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bonafite_certificate_form);
 
+
         storageReference = FirebaseStorage.getInstance().getReference();
         userID = UUID.randomUUID().toString();
 
@@ -130,6 +131,8 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
             }
         });
+        getSupportActionBar().hide();
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
