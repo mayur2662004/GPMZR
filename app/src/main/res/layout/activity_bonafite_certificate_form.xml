@@ -95,7 +95,6 @@
                     android:layout_marginLeft="300dp"
                     android:text="Clear"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_delete_24"
                     android:textColor="#BF4A45"
                     android:textSize="20dp" />
 
@@ -200,6 +199,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:id="@+id/ed"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:gravity="center_horizontal">
@@ -305,6 +305,22 @@
 
             </androidx.cardview.widget.CardView>
 
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/submit_button"
+                    android:text="Submit"/>
+            </androidx.cardview.widget.CardView>
 
 
 
