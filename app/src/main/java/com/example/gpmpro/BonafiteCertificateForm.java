@@ -148,26 +148,6 @@ public class BonafiteCertificateForm extends AppCompatActivity {
             Toast.makeText(this, "Failed to add ", Toast.LENGTH_SHORT).show();
         }
 
-
-//        if (resultCode == RESULT_OK) {
-//
-//            // compare the resultCode with the
-//            // SELECT_PICTURE constant
-//            if (requestCode == SELECT_PDF) {
-//                // Get the url of the image from data
-//                Uri selectedPdfUri = data.getData();
-//                if (null != selectedPdfUri) {
-//                    // update the preview image in the layout
-//                    tv_upload_file.setText(selectedPdfUri.toString());
-//                   uploadPDFToFirebase(selectedPdfUri);
-//                   pd.show();
-//                }
-//                else {
-//                    Toast.makeText(this, "Failed to load pdf", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//        }
     }
 
     private void uploadpdfToFirebase(Uri data) {
@@ -210,30 +190,4 @@ public class BonafiteCertificateForm extends AppCompatActivity {
     }
 
 
-
-    private void uploadPDFToFirebase(Uri selectedPdfUri) {
-
-        pd.show();
-        StorageReference fileRef = storageReference.child("UploadPdf/"+userID +"payment.pdf");
-        fileRef.putFile(selectedPdfUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Toast.makeText(BonafiteCertificateForm.this, "Uploaded!", Toast.LENGTH_LONG).show();
-                        pd.dismiss();
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(BonafiteCertificateForm.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                pd.dismiss();
-            }
-        });
-
-
-    }
 }
