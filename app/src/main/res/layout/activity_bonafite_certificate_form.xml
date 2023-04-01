@@ -16,9 +16,8 @@
         android:textColor="#D50F08"
         android:textStyle="bold"
         android:layout_marginTop="30dp"
-        android:textSize="24dp"
-        android:layout_marginHorizontal="5dp"
-        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_gravity="center"
         android:text="Goverment Polytechnic Murtizapur"
         android:fontFamily="sans-serif-black"
         />
@@ -32,20 +31,25 @@
         android:layout_marginTop="10dp">
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/gpm_logo"/>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/title_of_application_of_bonafite_form_page"
-            android:textColor="#BF4A45"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginHorizontal="15dp"
-            android:layout_gravity="center_vertical"
-            android:text="Application Form
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title_of_application_of_bonafite_form_page"
+                android:textColor="#BF4A45"
+                android:textStyle="bold"
+                android:textSize="21dp"
+                android:layout_marginHorizontal="15dp"
+                android:text="Application Form
                            Of Bonafite Certificate "
-            android:fontFamily="sans-serif-black"
-            />
+                android:fontFamily="sans-serif-black"
+                />
+        </LinearLayout>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -75,20 +79,8 @@
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"/>
 
-<<<<<<< HEAD
 
-=======
-                <TextView
-                    android:id="@+id/tv_name_clear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="300dp"
-                    android:text="Clear"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="#BF4A45"
-                    android:textSize="20dp" />
->>>>>>> 71bc035f315eaa1673a36d00a2340ffb9fef5bd2
+
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -139,7 +131,7 @@
                 android:layout_marginHorizontal="20dp"
                 app:cardCornerRadius="5dp"
                 android:layout_marginTop="20dp">
-                <EditText
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/Et_date"
@@ -238,18 +230,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1st Year"
-                        android:layout_marginHorizontal="15dp"/>
+                        android:layout_marginHorizontal="10dp"/>
                     <RadioButton android:id="@+id/radio_2nd_year"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2nd Year"
-                        android:layout_marginRight="15dp"/>
+                        android:layout_marginRight="10dp"/>
 
                     <RadioButton android:id="@+id/radio_3rd_year"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3rd Year"
-                        android:layout_marginRight="15dp"/>
+                        android:layout_marginRight="10dp"/>
                 </RadioGroup>
 
 
