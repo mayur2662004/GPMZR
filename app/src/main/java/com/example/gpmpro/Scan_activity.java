@@ -82,4 +82,6 @@ public class Scan_activity extends AppCompatActivity {
             return false;
         }
     }
+    
+
 }
