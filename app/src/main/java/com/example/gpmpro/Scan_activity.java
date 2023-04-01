@@ -36,7 +36,9 @@ public class Scan_activity extends AppCompatActivity {
        bonafide.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+
 //               ScanCode();
+
                startActivity(new Intent(getApplicationContext(),BonafiteCertificateForm.class));
            }
        });
