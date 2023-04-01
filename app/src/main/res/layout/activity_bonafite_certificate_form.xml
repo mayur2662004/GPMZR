@@ -22,18 +22,7 @@
         android:text="Goverment Polytechnic Murtizapur"
         android:fontFamily="sans-serif-black"
         />
-    <!--    <RelativeLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:id="@+id/rela_layout">-->
 
-    <!--        <ImageView-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="100dp"-->
-    <!--            android:src="@drawable/gpm_logo"-->
-    <!--            android:layout_centerVertical="true"-->
-    <!--            android:layout_centerHorizontal="true"/>-->
-    <!--    </RelativeLayout>-->
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -130,6 +119,26 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
+                android:id="@+id/cd_date"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Et_date"
+                    android:hint="Date"
+                    android:layout_gravity="center"
+                    android:padding="3dp"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="10dp"/>
+
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
                 android:id="@+id/cd_Enrollment_num"
                 android:backgroundTint="@color/white"
                 android:layout_marginHorizontal="20dp"
@@ -160,6 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:id="@+id/ed"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:gravity="center_horizontal">
@@ -227,6 +237,25 @@
                         android:text="3rd year"
                         android:layout_marginRight="15dp"/>
 
+=======
+
+                    <RadioButton android:id="@+id/radio_1st_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1st Year"
+                        android:layout_marginHorizontal="15dp"/>
+                    <RadioButton android:id="@+id/radio_2nd_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2nd Year"
+                        android:layout_marginRight="15dp"/>
+
+                    <RadioButton android:id="@+id/radio_3rd_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3rd Year"
+                        android:layout_marginRight="15dp"/>
+
                 </RadioGroup>
 
 
@@ -250,6 +279,7 @@
                     android:inputType="number"/>
 
 
+
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -259,7 +289,7 @@
                 android:layout_marginHorizontal="20dp"
                 app:cardCornerRadius="5dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="50dp">
+                android:layout_marginBottom="40dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -270,21 +300,28 @@
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"
                     android:inputType="number"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_upload"
-                    android:text="Clear"
-                    android:textSize="20dp"
-                    android:textColor="#BF4A45"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="280dp"/>
+
 
             </androidx.cardview.widget.CardView>
 
 
 
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginHorizontal="20dp"
+               android:layout_marginBottom="40dp"
+               android:gravity="end">
+               <Button
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Submit"
+                   android:id="@+id/submit_button"
+                   android:layout_marginRight="30dp"
+                   android:textSize="20dp"
+                   android:padding="5dp"
+                   />
+           </LinearLayout>
 
 
         </LinearLayout>
