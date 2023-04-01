@@ -90,7 +90,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         });
 
 
-        btn_submit = findViewById(R.id.sub_btn);
+        btn_submit = findViewById(R.id.submit_button);
 
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
