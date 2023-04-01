@@ -7,7 +7,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class BonafiteCertificateAdapter extends RecyclerView.Adapter<BonafiteCertifateViewHolder> {
+
+    AdminViewBonafiteData adminViewBonafiteData;
+    List<BonafiteModel> modelList;
+
+    public BonafiteCertificateAdapter(AdminViewBonafiteData adminViewBonafiteData, List<BonafiteModel> modelList) {
+        this.adminViewBonafiteData = adminViewBonafiteData;
+        this.modelList = modelList;
+    }
+
     @NonNull
     @Override
     public BonafiteCertifateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,6 +48,6 @@ public class BonafiteCertificateAdapter extends RecyclerView.Adapter<BonafiteCer
 
     @Override
     public int getItemCount() {
-        return 0;
+        return modelList.size();
     }
 }

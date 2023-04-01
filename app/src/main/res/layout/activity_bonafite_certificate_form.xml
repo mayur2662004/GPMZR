@@ -74,7 +74,6 @@
                     android:padding="3dp"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"/>
-
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -211,7 +210,8 @@
                 android:backgroundTint="@color/white"
                 android:layout_marginHorizontal="20dp"
                 app:cardCornerRadius="5dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp">
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,6 +219,24 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:gravity="center_horizontal">
+                    <RadioButton android:id="@+id/radio_1st"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1st year"
+                        android:layout_marginRight="15dp"/>
+                    <RadioButton android:id="@+id/radio_2nd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2nd year"
+                        android:layout_marginRight="15dp"
+                        />
+                    <RadioButton android:id="@+id/radio_3rd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3rd year"
+                        android:layout_marginRight="15dp"/>
+
+=======
 
                     <RadioButton android:id="@+id/radio_1st_year"
                         android:layout_width="wrap_content"
@@ -236,6 +254,7 @@
                         android:layout_height="wrap_content"
                         android:text="3rd Year"
                         android:layout_marginRight="15dp"/>
+
                 </RadioGroup>
 
 
@@ -246,8 +265,7 @@
                 android:id="@+id/cd_sub"
                 android:backgroundTint="@color/white"
                 android:layout_marginHorizontal="20dp"
-                app:cardCornerRadius="5dp"
-                android:layout_marginTop="20dp">
+                app:cardCornerRadius="5dp">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -257,7 +275,8 @@
                     android:padding="3dp"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"
-                    />
+                    android:inputType="number"/>
+
 
 
             </androidx.cardview.widget.CardView>
@@ -302,6 +321,7 @@
                    android:padding="5dp"
                    />
            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
