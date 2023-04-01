@@ -10,5 +10,6 @@ public class LeavingCertificateForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaving_certificate_form);
+
     }
 }

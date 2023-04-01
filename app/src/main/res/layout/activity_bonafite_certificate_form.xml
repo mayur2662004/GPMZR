@@ -86,19 +86,6 @@
                     android:padding="3dp"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"/>
-
-                <TextView
-                    android:id="@+id/tv_name_clear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="300dp"
-                    android:text="Clear"
-                    android:layout_marginBottom="10dp"
-
-                    android:textColor="#BF4A45"
-                    android:textSize="20dp" />
-
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -117,16 +104,7 @@
                     android:padding="3dp"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_middle_clear"
-                    android:text="Clear"
-                    android:textSize="20dp"
-                    android:textColor="#BF4A45"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="280dp"/>
+
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -146,16 +124,7 @@
                     android:padding="3dp"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_last_clear"
-                    android:text="Clear"
-                    android:textSize="20dp"
-                    android:textColor="#BF4A45"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="280dp"/>
+
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -176,16 +145,7 @@
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"
                     android:inputType="number"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_enroll_num"
-                    android:text="Clear"
-                    android:textSize="20dp"
-                    android:textColor="#BF4A45"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="280dp"/>
+
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -231,16 +191,44 @@
                         android:text="CE"
                         android:layout_marginRight="10dp"/>
                 </RadioGroup>
-                <TextView
-                    android:layout_width="wrap_content"
+
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_year"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp">
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_Branch"
-                    android:text="Clear"
-                    android:textSize="20dp"
-                    android:textColor="#BF4A45"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="280dp"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center_horizontal">
+                    <RadioButton android:id="@+id/radio_1st"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1st year"
+                        android:layout_marginRight="15dp"/>
+                    <RadioButton android:id="@+id/radio_2nd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2nd year"
+                        android:layout_marginRight="15dp"
+                        />
+                    <RadioButton android:id="@+id/radio_3rd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3rd year"
+                        android:layout_marginRight="15dp"/>
+
+                </RadioGroup>
+
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -249,8 +237,7 @@
                 android:id="@+id/cd_sub"
                 android:backgroundTint="@color/white"
                 android:layout_marginHorizontal="20dp"
-                app:cardCornerRadius="5dp"
-                android:layout_marginTop="20dp">
+                app:cardCornerRadius="5dp">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -261,16 +248,7 @@
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"
                     android:inputType="number"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_sub"
-                    android:text="Clear"
-                    android:textSize="20dp"
-                    android:textColor="#BF4A45"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="280dp"/>
+
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -304,6 +282,7 @@
                     android:layout_marginLeft="280dp"/>
 
             </androidx.cardview.widget.CardView>
+
 
 
 
