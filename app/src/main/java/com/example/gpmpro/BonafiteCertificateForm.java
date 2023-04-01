@@ -10,5 +10,6 @@ public class BonafiteCertificateForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bonafite_certificate_form);
+        getSupportActionBar().hide();
     }
 }
