@@ -31,7 +31,8 @@
         android:layout_marginTop="10dp">
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"/>
+            android:layout_height="100dp"
+            android:src="@drawable/gpm_logo"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,21 +74,6 @@
                     android:padding="3dp"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"/>
-
-<<<<<<< HEAD
-
-=======
-                <TextView
-                    android:id="@+id/tv_name_clear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="300dp"
-                    android:text="Clear"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="#BF4A45"
-                    android:textSize="20dp" />
->>>>>>> 71bc035f315eaa1673a36d00a2340ffb9fef5bd2
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -138,7 +124,7 @@
                 android:layout_marginHorizontal="20dp"
                 app:cardCornerRadius="5dp"
                 android:layout_marginTop="20dp">
-                <EditText
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/Et_date"
