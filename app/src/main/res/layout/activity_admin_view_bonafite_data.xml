@@ -16,6 +16,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginHorizontal="10dp">
+<<<<<<< HEAD
         <androidx.appcompat.widget.SearchView
             android:layout_width="280dp"
             android:layout_height="50dp"
@@ -23,15 +24,37 @@
             />
         <Spinner
             android:layout_width="wrap_content"
+=======
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+>>>>>>> 051d4a9958a40aa368e9525a82b0ff2e58bf6fa9
             android:layout_height="wrap_content"
-            android:entries="@array/Select"/>
+            app:iconifiedByDefault="false"
+            app:queryHint="Search Here ..."
+            android:background="@drawable/card_border"/>
+
+<!--        <Spinner-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:entries="@array/Select"/>-->
+
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:id="@+id/recycleview_in_adminpage"/>
+=======
+        android:layout_height="match_parent"
+        android:id="@+id/recycleview_in_adminpage"
+        android:layout_marginTop="10dp"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+>>>>>>> 051d4a9958a40aa368e9525a82b0ff2e58bf6fa9
 
 
 </LinearLayout>
