@@ -1,8 +1,10 @@
 package com.example.gpmpro;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,7 +44,40 @@ public class BonafiteCertificateAdapter extends RecyclerView.Adapter<BonafiteCer
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BonafiteCertifateViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BonafiteCertifateViewHolder holder, @SuppressLint("RecyclerView") int i) {
+        holder.name.setText(modelList.get(i).getName()+" "+modelList.get(i).getMiddleName()+" "+modelList.get(i).getSurName());
+        holder.date.setText(modelList.get(i).getDate());
+        holder.enrollment.setText(modelList.get(i).getEnrollmentNo());
+        holder.branch.setText(modelList.get(i).getBranch());
+        holder.year.setText(modelList.get(i).getYears());
+
+        // This is for verifying application form of bonafite certificate
+        holder.verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String verify = modelList.get(i).getVerify();
+                if (verify.equalsIgnoreCase("True")){
+                    Toast.makeText(adminViewBonafiteData, "Already Verify", Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                }
+            }
+        });
+
+          // This is for download PDF application form of bonafite certificate
+        holder.downloadPdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String verify = modelList.get(i).getVerify();
+                if (verify.equalsIgnoreCase("False")){
+                    Toast.makeText(adminViewBonafiteData, "Please Verify First!!", Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                }
+            }
+        });
 
     }
 
