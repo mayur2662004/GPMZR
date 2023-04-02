@@ -20,6 +20,9 @@
         android:theme="@style/Theme.GPMPRO"
         tools:targetApi="31">
         <activity
+            android:name=".Student_Registretoin_Activity"
+            android:exported="false" />
+        <activity
             android:name=".AdminViewBonafiteData"
             android:exported="false" />
         <activity
