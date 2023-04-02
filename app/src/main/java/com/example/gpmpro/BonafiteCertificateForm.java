@@ -257,6 +257,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         map.put("Branch",branch);
         map.put("Year",year);
         map.put("Subject",subject);
+        map.put("Verify","False");
 
         firebaseFirestore.collection("StudentBonafiteCertificateApplicationForm").document(userID).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

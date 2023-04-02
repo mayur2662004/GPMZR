@@ -42,7 +42,7 @@ public class Scan_activity extends AppCompatActivity {
 
 
 
-               startActivity(new Intent(getApplicationContext(),BonafiteCertificateForm.class));
+               startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
            }
        });
 
