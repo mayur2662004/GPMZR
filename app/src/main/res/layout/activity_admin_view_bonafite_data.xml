@@ -14,11 +14,19 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_marginHorizontal="10dp">
+
         <androidx.appcompat.widget.SearchView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/card_border"
-            />
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryHint="Search Here ..."
+            android:background="@drawable/card_border"/>
+
+<!--        <Spinner-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:entries="@array/Select"/>-->
+
 
     </LinearLayout>
 
