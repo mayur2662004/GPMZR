@@ -11,14 +11,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="10dp">
-        <SearchView
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:background="@drawable/card_border"
-            />
+        android:layout_margin="2sp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryHint="Search Here ..." />
+
         <Spinner
             android:layout_width="80dp"
             android:layout_height="wrap_content"
@@ -29,6 +30,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="8sp"
         android:id="@+id/recycleview_in_adminpage"
         >
 
