@@ -38,11 +38,7 @@ public class Scan_activity extends AppCompatActivity {
            public void onClick(View view) {
 
 
-//               ScanCode();
-
-
-
-               startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
+               ScanCode();
            }
        });
 
@@ -71,7 +67,7 @@ public class Scan_activity extends AppCompatActivity {
 //                     wb.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSfw4oBbMQQcEZzch9NqbE_A6BZRyW4jqfzx2bURRWsKK_cyOA/viewform?usp=sf_link ");
 //                     bonafide.setVisibility(View.GONE);
 
-                     startActivity(new Intent(getApplicationContext(),LeavingCertificateForm.class));
+                     startActivity(new Intent(getApplicationContext(),BonafiteCertificateForm.class));
 
                  }
                  else {

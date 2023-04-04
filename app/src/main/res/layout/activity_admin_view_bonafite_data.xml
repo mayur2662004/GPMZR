@@ -18,6 +18,7 @@
         android:layout_marginHorizontal="10dp">
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"
@@ -26,12 +27,18 @@
 
 
     </LinearLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recycleview_in_adminpage"
         android:layout_marginTop="10dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 
