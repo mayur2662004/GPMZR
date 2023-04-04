@@ -19,7 +19,7 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="30dp"
         app:cardElevation="32dp"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,6 +71,16 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:hint="Verification Code"
+                android:textColorHint="@color/black"
+                android:layout_marginTop="20dp"/>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -115,6 +125,16 @@
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:hint="OTP"
+                android:textColorHint="@color/black"
+                android:layout_marginTop="20dp"/>
 
             <Button
                 android:id="@+id/RegisterBtn"
@@ -224,7 +244,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:hint="Phone"
+                android:hint="Verification Code"
                 android:textColorHint="@color/black"
                 android:layout_marginTop="20dp"/>
 

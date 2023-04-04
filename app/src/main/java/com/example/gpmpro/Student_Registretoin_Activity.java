@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.regex.Pattern;
 
 public class Student_Registretoin_Activity extends AppCompatActivity {
 
@@ -73,22 +76,26 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (rg_full_name.getText().toString().isEmpty()){
+                String name = rg_full_name.getText().toString().trim();
+                String email = rg_email.getText().toString().trim();
+                String pass = rg_pass.getText().toString().trim();
+                String phone = rg_phone.getText().toString().trim();
+                if (name.isEmpty()){
                     rg_full_name.setError("Full Name is Required!");
 
                 }
-                else if (rg_email.getText().toString().isEmpty()){
+                else if (email.isEmpty()){
                     rg_email.setError("Email Address is Required !");
                 }
-                else if (!rg_email.getText().toString().contains("@")||!rg_email.getText().toString().contains(".")){
+                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     rg_email.setError("Invalid Email !! Please Correct Email Address");
                 }
-                else if (rg_pass.getText().toString().isEmpty()){
+                else if (pass.isEmpty()){
                     rg_pass.setError("Password is Required");
                 }
-                else if (rg_pass.getText().toString().length()<8){
+                else if (pass.length()<8){
                     rg_pass.setError("Password Must be greater than 8 Character");
-                } else if(rg_phone.getText().toString().isEmpty()){
+                } else if(phone.isEmpty()){
                     rg_phone.setError("Phone No Required ! ");
 
                 }
@@ -98,10 +105,7 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(Student_Registretoin_Activity.this, "Registration is  Successfully.", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(Student_Registretoin_Activity.this, Scan_activity.class);
-                    startActivity(intent);
-                    finish();
+//                    addData()
 
                 }
 
