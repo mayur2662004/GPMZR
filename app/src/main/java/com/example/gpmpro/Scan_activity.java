@@ -38,7 +38,15 @@ public class Scan_activity extends AppCompatActivity {
            public void onClick(View view) {
 
 
+<<<<<<< HEAD
                ScanCode();
+=======
+//               ScanCode();
+
+
+
+               startActivity(new Intent(getApplicationContext(),Student_Registretoin_Activity.class));
+>>>>>>> d04b02c8ae39a3e432f81e77de2baf68f6e91ea8
            }
        });
 
@@ -84,4 +92,6 @@ public class Scan_activity extends AppCompatActivity {
             return false;
         }
     }
+
+
 }
