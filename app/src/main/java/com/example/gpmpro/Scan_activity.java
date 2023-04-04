@@ -42,7 +42,7 @@ public class Scan_activity extends AppCompatActivity {
 
 
 
-               startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
+               startActivity(new Intent(getApplicationContext(),Student_Registretoin_Activity.class));
            }
        });
 
@@ -88,4 +88,6 @@ public class Scan_activity extends AppCompatActivity {
             return false;
         }
     }
+
+
 }
