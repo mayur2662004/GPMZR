@@ -82,7 +82,7 @@ public class Scan_activity extends AppCompatActivity {
              }
     });
 
-    private class Callback extends WebViewClient {
+    static class Callback extends WebViewClient {
         @Override
         public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
             return false;

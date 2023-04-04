@@ -1,6 +1,7 @@
 package com.example.gpmpro;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,30 @@ public class BonafiteCertificateAdapter extends RecyclerView.Adapter<BonafiteCer
         bonafiteCertifateViewHolder.setOnClickListener(new BonafiteCertifateViewHolder.ClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                String id = modelList.get(position).getId();
+                String date = modelList.get(position).getDate();
+                String name = modelList.get(position).getName();
+                String middleName = modelList.get(position).getMiddleName();
+                String lastName = modelList.get(position).getSurName();
+                String branch = modelList.get(position).getBranch();
+                String year = modelList.get(position).getYears();
+                String enrollmentNo = modelList.get(position).getEnrollmentNo();
+                String subject = modelList.get(position).getSubject();
+                String verify = modelList.get(position).getVerify();
 
+                Intent intent = new Intent(adminViewBonafiteData,AdminViewSpecificData.class);
+                intent.putExtra("Id",id);
+                intent.putExtra("Name",name);
+                intent.putExtra("MiddleName",middleName);
+                intent.putExtra("LastName",lastName);
+                intent.putExtra("Date",date);
+                intent.putExtra("EnrollmentNo",enrollmentNo);
+                intent.putExtra("Branch",branch);
+                intent.putExtra("Year",year);
+                intent.putExtra("Subject",subject);
+                intent.putExtra("Verify",verify);
+
+                adminViewBonafiteData.startActivity(intent);
             }
 
             @Override
