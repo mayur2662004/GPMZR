@@ -1,13 +1,17 @@
 package com.example.gpmpro;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -156,6 +160,7 @@ public class AdminViewBonafiteData extends AppCompatActivity {
     public void downloandPdf(int i) {
 
 
+
        Bitmap bmp= BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
        Bitmap bms=BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
        Bitmap scalebitmap=Bitmap.createScaledBitmap(bmp,50,30,false);
@@ -230,8 +235,10 @@ public class AdminViewBonafiteData extends AppCompatActivity {
             Toast.makeText(AdminViewBonafiteData.this, "Priting ", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         mypdfdocument.close();
+
 
 
     }
