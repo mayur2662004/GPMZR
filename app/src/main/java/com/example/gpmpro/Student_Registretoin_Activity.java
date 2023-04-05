@@ -25,7 +25,6 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
     TextView rg_new_user,log_already_register;
     Button btn_reg,btn_log;
 
-    CardView cd_reg,cd_log;
 
     StorageReference storageReference;
 
@@ -37,8 +36,7 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registretoin);
 
-        cd_reg=findViewById(R.id.cd_reg);
-        cd_log=findViewById(R.id.lod_cd);
+
 
 
         rg_full_name = findViewById(R.id.full_name_reg);
@@ -46,31 +44,14 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
         rg_pass = findViewById(R.id.password_reg);
         rg_phone = findViewById(R.id.phono_reg);
 
-        log_email = findViewById(R.id.email_log);
-        log_pass = findViewById(R.id.pass_log);
+
 
         rg_new_user = findViewById(R.id.tv_newuser_reg);
-        log_already_register = findViewById(R.id.tv_alredy_reg);
 
-        btn_log = findViewById(R.id.login_Btn);
         btn_reg = findViewById(R.id.RegisterBtn);
 
 
-        rg_new_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               cd_reg.setVisibility(view.VISIBLE);
-               cd_log.setVisibility(view.GONE);
-            }
-        });
 
-        log_already_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cd_reg.setVisibility(view.GONE);
-                cd_log.setVisibility(view.VISIBLE);
-            }
-        });
 
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,31 +90,7 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
 
                 }
 
-                btn_log.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
 
-                        if (log_email.getText().toString().isEmpty()){
-                            log_email.setError("Email is Required");
-                        }
-                        else if (!log_email.getText().toString().contains("@") || !log_email.getText().toString().contains(".")){
-                            log_email.setError("Invalid Email !! Please Correct Email Address");
-                        }
-                        else if (log_pass.getText().toString().isEmpty()){
-                            log_pass.setError("Password is Required");
-
-                        }
-                        else if (log_pass.getText().toString().length()<8){
-                            log_pass.setError("Password Must be greater than 8 Character");
-                        }
-                        else {
-                            Toast.makeText(Student_Registretoin_Activity.this, "Login in Successfully.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Student_Registretoin_Activity.this,Scan_activity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                });
 
             }
         });
