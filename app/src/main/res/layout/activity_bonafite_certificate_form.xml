@@ -19,8 +19,7 @@
         android:layout_marginHorizontal="5dp"
         android:layout_gravity="center"
         android:text="Goverment Polytechnic Murtizapur"
-        android:fontFamily="sans-serif-black"
-        />
+        android:fontFamily="sans-serif-black" />
 
 
     <LinearLayout
@@ -243,10 +242,6 @@
                         android:layout_height="wrap_content"
                         android:text="3rd year"
                         android:layout_marginRight="15dp"/>
-
-
-
-
 
                 </RadioGroup>
 

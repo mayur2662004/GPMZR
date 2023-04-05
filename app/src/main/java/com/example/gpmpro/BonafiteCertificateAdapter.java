@@ -1,7 +1,9 @@
 package com.example.gpmpro;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
@@ -121,17 +125,21 @@ public class BonafiteCertificateAdapter extends RecyclerView.Adapter<BonafiteCer
                     Toast.makeText(adminViewBonafiteData, "Please Verify First!!", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    adminViewBonafiteData.downloandPdf(i);
+
+                    if (ContextCompat.checkSelfPermission(adminViewBonafiteData, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(adminViewBonafiteData, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                        adminViewBonafiteData.downloandPdf(i);
+                    }
+                    else {
+                        adminViewBonafiteData.downloandPdf(i);
+                    }
+
                 }
             }
         });
 
     }
 
-    private void downloandPdf(int i) {
-
-
-    }
 
     @Override
     public int getItemCount() {

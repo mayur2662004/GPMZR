@@ -37,16 +37,9 @@ public class Scan_activity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
 
-
-<<<<<<< HEAD
                ScanCode();
-=======
-//               ScanCode();
+//               startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
 
-
-
-               startActivity(new Intent(getApplicationContext(),Student_Registretoin_Activity.class));
->>>>>>> d04b02c8ae39a3e432f81e77de2baf68f6e91ea8
            }
        });
 
@@ -72,8 +65,6 @@ public class Scan_activity extends AppCompatActivity {
              {
 
                  if (result.getContents().equalsIgnoreCase("I Love You")){
-//                     wb.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSfw4oBbMQQcEZzch9NqbE_A6BZRyW4jqfzx2bURRWsKK_cyOA/viewform?usp=sf_link ");
-//                     bonafide.setVisibility(View.GONE);
 
                      startActivity(new Intent(getApplicationContext(),BonafiteCertificateForm.class));
 
