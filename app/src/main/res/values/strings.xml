@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">GPM PRO</string>
+    <array name="Select">
+        <item>Filter</item>
+        <item>verify</item>
+        <item>not verify</item>
+        <item>branch</item>
+        <item>year</item>
+
+    </array>
 </resources>

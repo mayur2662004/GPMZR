@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:background="#EFE7E7">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,9 +15,9 @@
         android:textColor="#D50F08"
         android:textStyle="bold"
         android:layout_marginTop="30dp"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:layout_marginHorizontal="5dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:text="Goverment Polytechnic Murtizapur"
         android:fontFamily="sans-serif-black"
         />
@@ -34,19 +33,23 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/gpm_logo"/>
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/title_of_application_of_bonafite_form_page"
-            android:textColor="#BF4A45"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginHorizontal="15dp"
-            android:layout_gravity="center_vertical"
-            android:text="Application Form
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title_of_application_of_bonafite_form_page"
+                android:textColor="#BF4A45"
+                android:textStyle="bold"
+                android:textSize="21dp"
+                android:layout_marginHorizontal="15dp"
+                android:text="Application Form
                            Of Bonafite Certificate "
-            android:fontFamily="sans-serif-black"
-            />
+                android:fontFamily="sans-serif-black"
+                />
+        </LinearLayout>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -116,14 +119,24 @@
 
 
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="130dp" android:id="@+id/cd_date" android:backgroundTint="@color/white" android:layout_marginHorizontal="20dp" app:cardCornerRadius="5dp" android:layout_marginTop="20dp">
-                <EditText
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/cd_date"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="20dp">
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/Et_date"
+                    android:id="@+id/Tv_date"
+                    android:text="Date"
                     android:hint="Date"
                     android:layout_gravity="center"
                     android:padding="3dp"
+                    android:textColor="@color/black"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"/>
 
@@ -144,6 +157,7 @@
                     android:hint="Enrollment Number"
                     android:layout_gravity="center"
                     android:padding="3dp"
+                    android:maxLength="10"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"
                     android:inputType="number"/>
@@ -210,6 +224,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:id="@+id/year"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:gravity="center_horizontal">
@@ -230,24 +245,9 @@
                         android:text="3rd year"
                         android:layout_marginRight="15dp"/>
 
-=======
 
-                    <RadioButton android:id="@+id/radio_1st_year"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1st Year"
-                        android:layout_marginHorizontal="15dp"/>
-                    <RadioButton android:id="@+id/radio_2nd_year"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2nd Year"
-                        android:layout_marginRight="15dp"/>
 
-                    <RadioButton android:id="@+id/radio_3rd_year"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3rd Year"
-                        android:layout_marginRight="15dp"/>
+
 
                 </RadioGroup>
 
@@ -269,7 +269,7 @@
                     android:padding="3dp"
                     android:textSize="20dp"
                     android:layout_marginHorizontal="10dp"
-                    android:inputType="number"/>
+                    android:inputType="text"/>
 
 
 
@@ -299,22 +299,23 @@
 
 
 
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginHorizontal="20dp"
-               android:layout_marginBottom="40dp"
-               android:gravity="end">
-               <Button
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Submit"
-                   android:id="@+id/submit_button"
-                   android:layout_marginRight="30dp"
-                   android:textSize="20dp"
-                   android:padding="5dp"
-                   />
-           </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="40dp"
+                android:gravity="end">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Submit"
+                    android:id="@+id/submit_button"
+                    android:layout_marginRight="30dp"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    />
+            </LinearLayout>
 
 
         </LinearLayout>

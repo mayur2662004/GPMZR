@@ -37,7 +37,17 @@ public class Scan_activity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
 
+
                startActivity(new Intent(getApplicationContext(),BonafiteCertificateForm.class));
+
+
+
+//               ScanCode();
+
+
+
+               startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
+
            }
        });
 
@@ -77,7 +87,7 @@ public class Scan_activity extends AppCompatActivity {
              }
     });
 
-    private class Callback extends WebViewClient {
+    static class Callback extends WebViewClient {
         @Override
         public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
             return false;

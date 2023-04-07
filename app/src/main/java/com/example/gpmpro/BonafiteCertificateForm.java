@@ -3,13 +3,19 @@ package com.example.gpmpro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -17,9 +23,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -27,7 +35,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.zxing.pdf417.encoder.PDF417;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import android.os.Handler;
@@ -37,21 +48,35 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
     static final String rq = "Required!!";
     EditText et_name_of_std, et_name_of_middle, et_name_of_last, et_name_of_enroll_num, et_sub;
-    TextView tv_upload_file;
+    TextView tv_upload_file,tv_date;
     Button btn_submit;
 //    RadioButton rd_civil, rb_co, rb_it, rb_mech, rb_ee;
 
-    String branchinfo;
-    RadioGroup rg;
+    String branchinfo,Yearinfo;
+    RadioGroup rg,rg_year;
+
+    // Date
+    DatePickerDialog.OnDateSetListener onDateSetListener;
+
+    String date;
 
     StorageReference storageReference;
+    FirebaseFirestore firebaseFirestore;
+
+
     int SELECT_PDF = 1;
     ProgressDialog pd;
 
     String userID;
 
+
+
     Handler mHandler;
 
+
+    Boolean checkItUpload = true;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +86,8 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
 
         storageReference = FirebaseStorage.getInstance().getReference();
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
         userID = UUID.randomUUID().toString();
 
 
@@ -70,11 +97,16 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         et_name_of_enroll_num = findViewById(R.id.Et_enroll_num);
         et_sub = findViewById(R.id.Et_sub);
         rg = findViewById(R.id.ed);
+        rg_year = findViewById(R.id.year);
 
         pd = ProgressDialog.show(this,"Loading ...","Please Wait",false,false);
         pd.dismiss();
 
         tv_upload_file = findViewById(R.id.Et_upload_file);
+        tv_date = findViewById(R.id.Tv_date);
+
+
+
 
         tv_upload_file.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +134,65 @@ public class BonafiteCertificateForm extends AppCompatActivity {
             }
         });
 
+        rg_year.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int radioButtonID = rg_year.getCheckedRadioButtonId();
+                View radioButton = rg_year.findViewById(radioButtonID);
+                int idc = rg_year.indexOfChild(radioButton);
+                RadioButton r = (RadioButton)  rg_year.getChildAt(idc);
+                Yearinfo = r.getText().toString().trim();
+            }
+        });
+
+
+        //It for date
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        tv_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        BonafiteCertificateForm.this, com.google.android.material.R.style.MaterialAlertDialog_MaterialComponents_Picker_Date_Calendar,
+                        onDateSetListener,year,month,day);
+
+                //Theme_Material_Light_Dialog_MinWidth
+
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(230,223,223)));
+
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                datePickerDialog.show();
+            }
+        });
+
+        onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                if (month<=9){ //
+                    date  = year+"/"+"0"+month+"/"+dayOfMonth;
+                }
+                else if (dayOfMonth<=9){
+                    date  = year+"/"+month+"/"+"0"+dayOfMonth;
+                }
+                else {
+                    date  = year+"/"+month+"/"+dayOfMonth;
+                }
+                if (month<=9 && dayOfMonth<=9){
+                    date  = year+"/"+"0"+month+"/"+"0"+dayOfMonth;
+                }
+                tv_date.setText(date);
+            }
+        };
+
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+
+        tv_date.setText(df.format(c));
+
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +201,10 @@ public class BonafiteCertificateForm extends AppCompatActivity {
                 String name = et_name_of_std.getText().toString().trim();
                 String middelname = et_name_of_middle.getText().toString().trim();
                 String lastname = et_name_of_last.getText().toString().trim();
+                String date = tv_date.getText().toString().trim();
                 String enrollmentno = et_name_of_enroll_num.getText().toString().trim();
+                String branch = branchinfo;
+                String year = Yearinfo;
                 String subject = et_sub.getText().toString().trim();
 
                 if (name.isEmpty()) {
@@ -119,21 +213,63 @@ public class BonafiteCertificateForm extends AppCompatActivity {
                     et_name_of_middle.setError(rq);
                 } else if (lastname.isEmpty()) {
                     et_name_of_last.setError(rq);
+                } else if (date.equalsIgnoreCase("Date")) {
+                    tv_date.setError(rq);
                 } else if (enrollmentno.isEmpty()) {
                     et_name_of_enroll_num.setError(rq);
-                } else if (subject.isEmpty()) {
-                    et_sub.setError(rq);
-                } else if (branchinfo == null) {
+                }
+                else if (enrollmentno.length()<10 || enrollmentno.length()>10 ) {
+                    et_name_of_enroll_num.setError("Enter Valid Enrollment Number");
+                }
+                else if (branchinfo == null) {
                     Toast.makeText(BonafiteCertificateForm.this, "Branch is " + rq, Toast.LENGTH_SHORT).show();
 
                 }
+                else if (Yearinfo == null) {
+                    Toast.makeText(BonafiteCertificateForm.this, "Year is " + rq, Toast.LENGTH_SHORT).show();
+
+                }
+                else if (subject.isEmpty()) {
+                    et_sub.setError(rq);
+                }
+                else if (checkItUpload) {
+                    Toast.makeText(BonafiteCertificateForm.this, "Upload your payment receipt ", Toast.LENGTH_SHORT).show();
+                }
+
                 else {
-//                    addDataToFirebase(name,middelname,lastname,enrollmentno,subject);
+                    addDataToFirebase(name,middelname,lastname,date,enrollmentno,branch,year,subject);
                 }
 
             }
         });
         getSupportActionBar().hide();
+
+    }
+
+    private void addDataToFirebase(String name, String middelname, String lastname, String date, String enrollmentno, String branch, String year, String subject) {
+        Map<String,Object> map=new HashMap<>();
+        map.put("Id",userID);
+        map.put("Name",name);
+        map.put("MiddleName",middelname);
+        map.put("LastName",lastname);
+        map.put("Date",date);
+        map.put("EnrollmentNo",enrollmentno);
+        map.put("Branch",branch);
+        map.put("Year",year);
+        map.put("Subject",subject);
+        map.put("Verify","False");
+
+        firebaseFirestore.collection("StudentBonafiteCertificateApplicationForm").document(userID).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(BonafiteCertificateForm.this, "You Application send Successfully", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
     }
 
@@ -148,8 +284,8 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         else {
             pd.show();
             Toast.makeText(this, "Failed to add ", Toast.LENGTH_SHORT).show();
+            pd.dismiss();
         }
-
 
     }
 
@@ -170,6 +306,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
                         while (!uriTask.isComplete());
                         Uri uri = uriTask.getResult();
                         tv_upload_file.setText(uri.toString());
+                        checkItUpload = false;
                         Toast.makeText(BonafiteCertificateForm.this, "Uplaoded", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
 
@@ -191,6 +328,4 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
 
     }
-
-    
 }
