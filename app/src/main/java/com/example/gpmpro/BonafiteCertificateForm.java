@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -80,6 +81,12 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
     AutoCompleteTextView autocomplete;
 
+
+    FirebaseAuth mAuth;
+
+    String emailId;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +104,10 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         autocomplete.setAdapter(adapter);
 
         storageReference = FirebaseStorage.getInstance().getReference();
+
+        mAuth = FirebaseAuth.getInstance();
+        emailId = mAuth.getCurrentUser().getUid();
+
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         userID = UUID.randomUUID().toString();
@@ -269,14 +280,15 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         map.put("Year",year);
         map.put("Subject",subject);
         map.put("Verify","False");
-
         map.put("AllName",name+" "+middelname+" "+lastname);
+        map.put("UserId",emailId);
+        map.put("Note","");
 
         firebaseFirestore.collection("StudentBonafiteCertificateApplicationForm").document(userID).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(BonafiteCertificateForm.this, "You Application send Successfully", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
+                startActivity(new Intent(getApplicationContext(),Scan_activity.class));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -289,8 +301,6 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-
 
         if (requestCode == 1 && resultCode == RESULT_OK && data!=null&&data.getData()!=null){
             uploadpdfToFirebase(data.getData());
