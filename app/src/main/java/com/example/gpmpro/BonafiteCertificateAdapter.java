@@ -1,15 +1,30 @@
 package com.example.gpmpro;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 public class BonafiteCertificateAdapter extends RecyclerView.Adapter<BonafiteCertifateViewHolder> {
@@ -75,6 +90,18 @@ public class BonafiteCertificateAdapter extends RecyclerView.Adapter<BonafiteCer
         holder.branch.setText(modelList.get(i).getBranch());
         holder.year.setText(modelList.get(i).getYears());
 
+        String verify = modelList.get(i).getVerify();
+
+
+        if (verify.equalsIgnoreCase("False")){
+            holder.verify.setImageResource(R.drawable.wrong_logo_new);
+        }
+        else {
+            holder.verify.setImageResource(R.drawable.yes_logo_new);
+        }
+
+
+
         // This is for verifying application form of bonafite certificate
         holder.verify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,11 +126,20 @@ public class BonafiteCertificateAdapter extends RecyclerView.Adapter<BonafiteCer
                 }
                 else {
 
+                    if (ContextCompat.checkSelfPermission(adminViewBonafiteData, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(adminViewBonafiteData, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                        adminViewBonafiteData.downloandPdf(i);
+                    }
+                    else {
+                        adminViewBonafiteData.downloandPdf(i);
+                    }
+
                 }
             }
         });
 
     }
+
 
     @Override
     public int getItemCount() {

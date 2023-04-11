@@ -63,8 +63,6 @@ public class BonafiteCertificateForm extends AppCompatActivity {
     StorageReference storageReference;
     FirebaseFirestore firebaseFirestore;
 
-
-    int SELECT_PDF = 1;
     ProgressDialog pd;
 
     String userID;
@@ -259,10 +257,13 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         map.put("Subject",subject);
         map.put("Verify","False");
 
+        map.put("AllName",name+" "+middelname+" "+lastname);
+
         firebaseFirestore.collection("StudentBonafiteCertificateApplicationForm").document(userID).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(BonafiteCertificateForm.this, "You Application send Successfully", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
