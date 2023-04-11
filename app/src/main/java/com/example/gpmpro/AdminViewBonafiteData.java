@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -22,6 +23,7 @@ import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.os.Environment;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,6 +40,8 @@ import java.util.List;
 
 public class AdminViewBonafiteData extends AppCompatActivity {
 
+    TextView Pending,Approve,Rejected;
+
     // For retrieving data from firebase i
     List<BonafiteModel> modelList = new ArrayList<>();
     RecyclerView recyclerView;
@@ -52,11 +56,19 @@ public class AdminViewBonafiteData extends AppCompatActivity {
 
     SwipeRefreshLayout refreshLayout;
 
+    float sum = 0;
+    float sumAppo = 0;
+    float sumRej = 0;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_bonafite_data);
+
+        Pending = findViewById(R.id.tv_pending);
+        Approve = findViewById(R.id.tv_approve);
+        Rejected = findViewById(R.id.tv_rejected);
 
         fStore = FirebaseFirestore.getInstance();
         pd = new ProgressDialog(this);
@@ -65,9 +77,10 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        modelList.clear();
+        modelList.clear();
         showData();
 
+        ActivityCompat.requestPermissions(AdminViewBonafiteData.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
         refreshLayout = findViewById(R.id.refresh);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -75,6 +88,40 @@ public class AdminViewBonafiteData extends AppCompatActivity {
             public void onRefresh() {
                 showData();
                 refreshLayout.setRefreshing(false);
+
+                if (sum < modelList.size() && sum<=0){
+                    for (int i=0;i<modelList.size();i++){
+                        if (modelList.get(i).getVerify().equalsIgnoreCase("False")){
+                            sum = sum + 1;
+
+                        }
+                    }
+                }
+
+
+                if (sumAppo < modelList.size() && sumAppo<=0){
+                    for (int i=0;i<modelList.size();i++){
+                        if (modelList.get(i).getVerify().equalsIgnoreCase("True")){
+                            sumAppo = sumAppo + 1;
+
+                        }
+                    }
+                }
+
+                if (sumRej < modelList.size() && sumRej<=0){
+                    for (int i=0;i<modelList.size();i++){
+                        if (modelList.get(i).getVerify().equalsIgnoreCase("Rejected")){
+                            sumRej = sumRej + 1;
+                        }
+                    }
+                }
+
+
+                Pending.setText(String.valueOf(sum));
+                Approve.setText(String.valueOf(sumAppo));
+                Rejected.setText(String.valueOf(sumRej));
+
+
             }
         });
 
@@ -125,6 +172,7 @@ public class AdminViewBonafiteData extends AppCompatActivity {
             }
         });
 
+
     }
 
     private void showData() {
@@ -147,7 +195,9 @@ public class AdminViewBonafiteData extends AppCompatActivity {
                                     doc.getString("Year"),
                                     doc.getString("Subject"),
                                     doc.getString("Verify"),
-                                    doc.getString("AllName")
+                                    doc.getString("AllName"),
+                                    doc.getString("UserId"),
+                                    doc.getString("Note")
                             );
                             modelList.add(model);
                         }
@@ -218,21 +268,22 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         canvas.drawText("For:His/Her Own Request ",10,260,paint);
         canvas.drawText("Principal",270,260,paint);
 
-
         mypdfdocument.finishPage(mypage);
         String folderName = "Student Information";
-        String fileName = "Student info.pdf";
+        String fileName = modelList.get(i).getEnrollmentNo()+" Bonafite.pdf";
 
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + folderName + File.separator + fileName;
 
         File file=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + folderName);
 
-        if (!file.exists()){
-            file.mkdirs();
-        }
+//        if (!file.exists()){
+//            file.mkdirs();
+//        }
+
         try {
+            file.mkdirs();
             mypdfdocument.writeTo(new FileOutputStream(path));
-            Toast.makeText(AdminViewBonafiteData.this, "Priting ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminViewBonafiteData.this, "Printing ", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -242,5 +293,4 @@ public class AdminViewBonafiteData extends AppCompatActivity {
 
 
     }
-
 }

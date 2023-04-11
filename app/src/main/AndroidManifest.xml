@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -15,10 +16,12 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.GPMPRO"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        tools:ignore="ExtraText">
         <activity
             android:name=".Adimin_Login_Activity"
             android:exported="true" >
@@ -28,13 +31,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".Rejected_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Pending_Activity"
+            android:exported="false" />
+>>>>>>> 6dd7c7cfd4333ad8027067a26786634b68cf6319
         <activity
             android:name=".Student_Login_Activity"
             android:exported="false" />
         <activity
             android:name=".Student_Registretoin_Activity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".AdminViewBonafiteData"
             android:exported="false" />
@@ -50,7 +65,6 @@
         <activity
             android:name=".Scan_activity"
             android:exported="false"/>
-
         <activity
             android:name=".CaptureAct"
             android:screenOrientation="portrait"
