@@ -18,10 +18,10 @@ import java.util.List;
 
 public class BonafiteCertificateAdapterForPendingAcivity extends RecyclerView.Adapter<BonafiteCertifateViewHolder> {
 
-    AdminViewBonafiteData adminViewBonafiteData;
+    Pending_Activity adminViewBonafiteData;
     List<BonafiteModel> modelList;
 
-    public BonafiteCertificateAdapterForPendingAcivity(AdminViewBonafiteData adminViewBonafiteData, List<BonafiteModel> modelList) {
+    public BonafiteCertificateAdapterForPendingAcivity(Pending_Activity adminViewBonafiteData, List<BonafiteModel> modelList) {
         this.adminViewBonafiteData = adminViewBonafiteData;
         this.modelList = modelList;
     }
@@ -81,51 +81,22 @@ public class BonafiteCertificateAdapterForPendingAcivity extends RecyclerView.Ad
 
         String verify = modelList.get(i).getVerify();
 
-
         if (verify.equalsIgnoreCase("False")){
-            holder.verify.setImageResource(R.drawable.wrong_logo_new);
+            holder.verify.setImageResource(R.drawable.pending_logo);
         }
-        else {
+        else if (verify.equalsIgnoreCase("True")){
             holder.verify.setImageResource(R.drawable.yes_logo_new);
         }
+        else if (verify.equalsIgnoreCase("Rejected")){
+            holder.verify.setImageResource(R.drawable.wrong_logo_new);
+        }
 
-
+        holder.downloadPdf.setVisibility(View.GONE);
 
         // This is for verifying application form of bonafite certificate
-        holder.verify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String verify = modelList.get(i).getVerify();
-                if (verify.equalsIgnoreCase("True")){
-                    Toast.makeText(adminViewBonafiteData, "Already Verify", Toast.LENGTH_LONG).show();
-                }
-                else {
 
-                }
-            }
-        });
 
           // This is for download PDF application form of bonafite certificate
-        holder.downloadPdf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String verify = modelList.get(i).getVerify();
-                if (verify.equalsIgnoreCase("False")){
-                    Toast.makeText(adminViewBonafiteData, "Please Verify First!!", Toast.LENGTH_LONG).show();
-                }
-                else {
-
-                    if (ContextCompat.checkSelfPermission(adminViewBonafiteData, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(adminViewBonafiteData, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                        adminViewBonafiteData.downloandPdf(i);
-                    }
-                    else {
-                        adminViewBonafiteData.downloandPdf(i);
-                    }
-
-                }
-            }
-        });
 
     }
 
