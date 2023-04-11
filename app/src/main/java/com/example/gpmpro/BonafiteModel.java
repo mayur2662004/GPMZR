@@ -1,9 +1,9 @@
 package com.example.gpmpro;
 
 public class BonafiteModel {
-    String id,name,middleName,surName,date,enrollmentNo,branch,years,subject,Verify,allName;
+    String id,name,middleName,surName,date,enrollmentNo,branch,years,subject,Verify,allName,emailId,note;
 
-    public BonafiteModel(String id, String name, String middleName, String surName, String date, String enrollmentNo, String branch, String years, String subject,String Verify,String allName) {
+    public BonafiteModel(String id, String name, String middleName, String surName, String date, String enrollmentNo, String branch, String years, String subject,String Verify,String allName,String emailId,String note) {
         this.id = id;
         this.name = name;
         this.middleName = middleName;
@@ -15,6 +15,8 @@ public class BonafiteModel {
         this.subject = subject;
         this.Verify = Verify;
         this.allName = allName;
+        this.emailId = emailId;
+        this.note = note;
     }
 
     public String getId() {
@@ -59,5 +61,12 @@ public class BonafiteModel {
 
     public String getAllName() {
         return allName;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+    public String getNote() {
+        return note;
     }
 }
