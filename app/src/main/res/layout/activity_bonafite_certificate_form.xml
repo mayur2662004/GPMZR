@@ -218,32 +218,84 @@
                 app:cardCornerRadius="5dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="50dp">
-                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<!--                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:id="@+id/sem"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:gravity="center_horizontal">-->
+<!--                    <TableLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        >-->
+<!--                        <TableRow-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content">-->
+<!--                            <RadioButton android:id="@+id/radio_1sem"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="1st Sem"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:layout_column="1"/>-->
+<!--                            <RadioButton android:id="@+id/radio_2sem"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="2nd Sem"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:layout_column="2"/>-->
+<!--                            <RadioButton android:id="@+id/radio_3sem"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="3rd Sem"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:layout_column="3"/>-->
+<!--                        </TableRow>-->
+
+<!--                   <TableRow-->
+<!--                       android:layout_width="wrap_content"-->
+<!--                       android:layout_height="wrap_content">-->
+<!--                    <RadioButton android:id="@+id/radio_1st"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="4th Sem"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_column="1"/>-->
+<!--                    <RadioButton android:id="@+id/radio_2nd"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="5th Sem"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_column="2"-->
+<!--                        />-->
+<!--                    <RadioButton android:id="@+id/radio_3rd"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="6th Sem"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_column="3"/>-->
+<!--                   </TableRow>-->
+<!--                    </TableLayout>-->
+<!--                </RadioGroup>-->
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/year"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:gravity="center_horizontal">
-                    <RadioButton android:id="@+id/radio_1st"
-                        android:layout_width="wrap_content"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginRight="20sp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:backgroundTint="@color/white">
+                    <AutoCompleteTextView
+                        android:text="Sem"
+                        android:backgroundTint="@color/white"
+                        android:id="@+id/autoCompleteTextView1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="1st year"
-                        android:layout_marginRight="15dp"/>
-                    <RadioButton android:id="@+id/radio_2nd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2nd year"
-                        android:layout_marginRight="15dp"
-                        />
-                    <RadioButton android:id="@+id/radio_3rd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3rd year"
-                        android:layout_marginRight="15dp"/>
-
-                </RadioGroup>
+                        android:textColor="@color/black"
+                        android:layout_weight="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
             </androidx.cardview.widget.CardView>
