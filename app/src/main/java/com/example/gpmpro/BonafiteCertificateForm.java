@@ -14,6 +14,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -74,6 +76,10 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
 
     Boolean checkItUpload = true;
+    String[] arr = { "1st sem", "2nd Sem","3rd Sem",
+            "4th Sem", "5th Sem","6th Sem"};
+
+    AutoCompleteTextView autocomplete;
 
 
     FirebaseAuth mAuth;
@@ -89,6 +95,13 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
+        autocomplete = (AutoCompleteTextView)
+                findViewById(R.id.autoCompleteTextView1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, arr);
+
+        autocomplete.setThreshold(2);
+        autocomplete.setAdapter(adapter);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -106,7 +119,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         et_name_of_enroll_num = findViewById(R.id.Et_enroll_num);
         et_sub = findViewById(R.id.Et_sub);
         rg = findViewById(R.id.ed);
-        rg_year = findViewById(R.id.year);
+//        rg_year = findViewById(R.id.sem);
 
         pd = ProgressDialog.show(this,"Loading ...","Please Wait",false,false);
         pd.dismiss();
@@ -143,16 +156,16 @@ public class BonafiteCertificateForm extends AppCompatActivity {
             }
         });
 
-        rg_year.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                int radioButtonID = rg_year.getCheckedRadioButtonId();
-                View radioButton = rg_year.findViewById(radioButtonID);
-                int idc = rg_year.indexOfChild(radioButton);
-                RadioButton r = (RadioButton)  rg_year.getChildAt(idc);
-                Yearinfo = r.getText().toString().trim();
-            }
-        });
+//        rg_year.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                int radioButtonID = rg_year.getCheckedRadioButtonId();
+//                View radioButton = rg_year.findViewById(radioButtonID);
+//                int idc = rg_year.indexOfChild(radioButton);
+//                RadioButton r = (RadioButton)  rg_year.getChildAt(idc);
+//                Yearinfo = r.getText().toString().trim();
+//            }
+//        });
 
 
         //It for date
@@ -213,7 +226,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
                 String date = tv_date.getText().toString().trim();
                 String enrollmentno = et_name_of_enroll_num.getText().toString().trim();
                 String branch = branchinfo;
-                String year = Yearinfo;
+                String year = autocomplete.getText().toString().trim();
                 String subject = et_sub.getText().toString().trim();
 
                 if (name.isEmpty()) {
@@ -234,8 +247,8 @@ public class BonafiteCertificateForm extends AppCompatActivity {
                     Toast.makeText(BonafiteCertificateForm.this, "Branch is " + rq, Toast.LENGTH_SHORT).show();
 
                 }
-                else if (Yearinfo == null) {
-                    Toast.makeText(BonafiteCertificateForm.this, "Year is " + rq, Toast.LENGTH_SHORT).show();
+                else if (autocomplete.equals("")) {
+                    Toast.makeText(BonafiteCertificateForm.this, "Sem " + rq, Toast.LENGTH_SHORT).show();
 
                 }
                 else if (subject.isEmpty()) {

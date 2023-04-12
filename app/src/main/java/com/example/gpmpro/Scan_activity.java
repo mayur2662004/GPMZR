@@ -42,8 +42,13 @@ public class Scan_activity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
 
+<<<<<<< HEAD
+               ScanCode();
+               startActivity(new Intent(getApplicationContext(),BonafiteCertificateForm.class));
+=======
 //               ScanCode();
                startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
+>>>>>>> 6dd7c7cfd4333ad8027067a26786634b68cf6319
 
            }
        });

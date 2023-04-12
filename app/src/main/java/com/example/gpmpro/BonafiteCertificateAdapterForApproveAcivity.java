@@ -90,7 +90,6 @@ public class BonafiteCertificateAdapterForApproveAcivity extends RecyclerView.Ad
         }
 
 
-
         // This is for verifying application form of bonafite certificate
         holder.verify.setOnClickListener(new View.OnClickListener() {
             @Override
