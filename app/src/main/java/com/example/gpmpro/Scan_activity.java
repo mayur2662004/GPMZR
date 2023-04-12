@@ -43,7 +43,7 @@ public class Scan_activity extends AppCompatActivity {
            public void onClick(View view) {
 
 //               ScanCode();
-               startActivity(new Intent(getApplicationContext(),Student_profile.class));
+               startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
            }
        });
 

@@ -36,27 +36,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:gravity="right"
-              android:layout_marginRight="20dp"
-              android:layout_marginTop="10dp">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Edit"
-                  android:textStyle="bold"
-                  android:textColor="@color/black"
-                  android:drawableRight="@drawable/baseline_edit_24"
-                  android:textSize="20dp"/>
-          </LinearLayout>
-
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/refresh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50sp">
+                android:layout_marginTop="30sp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"

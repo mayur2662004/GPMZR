@@ -310,7 +310,7 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         paint.setFakeBoldText(false);
         if (modelList.get(i).getAllName().length() < 30 ){
             canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is",40,165,paint);
-            canvas.drawText("a student of this institute during the year  20    -      studying  in",10,185,paint);
+            canvas.drawText("a student of this institute during the year "+years+" studying  in",10,185,paint);
             canvas.drawText(modelList.get(i).getYears()+" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
         }
         else {
