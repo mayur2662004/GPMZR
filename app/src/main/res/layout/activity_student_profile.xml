@@ -21,6 +21,31 @@
         android:backgroundTint="@color/white"
         android:background="@drawable/card_border"
         android:layout_marginHorizontal="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="right">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Status"
+                android:layout_gravity="left"
+                android:gravity="left"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/scan"
+            android:layout_gravity="right"
+            />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,21 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:gravity="right"
-              android:layout_marginRight="20dp"
-              android:layout_marginTop="10dp">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Edit"
-                  android:textStyle="bold"
-                  android:textColor="@color/black"
-                  android:drawableRight="@drawable/baseline_edit_24"
-                  android:textSize="20dp"/>
-          </LinearLayout>
+
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/refresh"
