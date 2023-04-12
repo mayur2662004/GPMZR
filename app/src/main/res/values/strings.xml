@@ -9,6 +9,5 @@
         <item>year</item>
 
     </array>
-    <string name="example_autocompletetextview">Example showing AutoCompleteTextView
-    </string>
+    <string name="example_autocompletetextview">Example showing AutoCompleteTextView</string>
 </resources>

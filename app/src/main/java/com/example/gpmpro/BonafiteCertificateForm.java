@@ -53,7 +53,6 @@ public class BonafiteCertificateForm extends AppCompatActivity {
     EditText et_name_of_std, et_name_of_middle, et_name_of_last, et_name_of_enroll_num, et_sub;
     TextView tv_upload_file,tv_date;
     Button btn_submit;
-//    RadioButton rd_civil, rb_co, rb_it, rb_mech, rb_ee;
 
     String branchinfo,Yearinfo;
     RadioGroup rg,rg_year;
@@ -76,8 +75,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
 
     Boolean checkItUpload = true;
-    String[] arr = { "1st sem", "2nd Sem","3rd Sem",
-            "4th Sem", "5th Sem","6th Sem"};
+    String[] arr = { "1st sem", "2nd Sem","3rd Sem","4th Sem", "5th Sem","6th Sem"};
 
     AutoCompleteTextView autocomplete;
 

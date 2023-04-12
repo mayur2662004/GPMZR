@@ -65,6 +65,9 @@ public class AdminViewBonafiteData extends AppCompatActivity {
     float sumAppo = 0;
     float sumRej = 0;
 
+    int nextDate = 0;
+
+    String years;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -240,11 +243,24 @@ public class AdminViewBonafiteData extends AppCompatActivity {
 
     public void downloandPdf(int i) {
 
+        String date = modelList.get(i).getDate();
+        int finalDate = Integer.parseInt(date.substring(2,4));
 
+        String sem = modelList.get(i).getYears();
+        int finalSem = Integer.parseInt(sem.substring(0,1));
 
-       Bitmap bmp= BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
-       Bitmap bms=BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
-       Bitmap scalebitmap=Bitmap.createScaledBitmap(bmp,50,30,false);
+        if (finalSem%2==0){
+            nextDate = finalDate - 1;
+            years = "20"+nextDate+"-"+finalDate;
+        }
+        else {
+            nextDate = finalDate + 1;
+            years = "20"+finalDate+"-"+nextDate;
+        }
+
+        Bitmap bmp= BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
+        Bitmap bms=BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
+        Bitmap scalebitmap=Bitmap.createScaledBitmap(bmp,50,30,false);
         Bitmap msbtebitmap=Bitmap.createScaledBitmap(bms,50,30,false);
 
         PdfDocument mypdfdocument=new PdfDocument();
@@ -282,7 +298,6 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         paint.setStrokeWidth(0);
         canvas.drawLine(0,85,360,85,paint);
 
-
         paint.setTextSize(10f);
 
         canvas.drawText("No:GPMZR//SS/BONA/20     /",205,100,paint);
@@ -293,9 +308,17 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         canvas.drawText("Bonafide Certificate",110,140,paint);
         paint.setTextSize(12f);
         paint.setFakeBoldText(false);
-        canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is a",40,165,paint);
-        canvas.drawText("student of this institute during the year  20    -      studying  in",10,185,paint);
-        canvas.drawText("___________th sem of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        if (modelList.get(i).getAllName().length() < 30 ){
+            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is",40,165,paint);
+            canvas.drawText("a student of this institute during the year "+years+" studying  in",10,185,paint);
+            canvas.drawText(modelList.get(i).getYears()+" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        }
+        else {
+            canvas.drawText("This is to certify that "+ modelList.get(i).getName() +" "+modelList.get(i).getMiddleName() ,40,165,paint);
+            canvas.drawText( modelList.get(i).getSurName()+" is a student of this institute during ",10,185,paint);
+            canvas.drawText("the year "+years+" studying  in "+modelList.get(i).getYears()+" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        }
+
         canvas.drawText("For:His/Her Own Request ",10,260,paint);
         canvas.drawText("Principal",270,260,paint);
 
