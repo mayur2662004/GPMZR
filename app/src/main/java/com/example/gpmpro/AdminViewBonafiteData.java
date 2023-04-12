@@ -3,6 +3,7 @@ package com.example.gpmpro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -23,6 +25,7 @@ import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +44,8 @@ import java.util.List;
 public class AdminViewBonafiteData extends AppCompatActivity {
 
     TextView Pending,Approve,Rejected;
+
+    CardView PendingCV,ApproveCV,RejectedCV;
 
     // For retrieving data from firebase i
     List<BonafiteModel> modelList = new ArrayList<>();
@@ -69,6 +74,10 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         Pending = findViewById(R.id.tv_pending);
         Approve = findViewById(R.id.tv_approve);
         Rejected = findViewById(R.id.tv_rejected);
+
+        PendingCV = findViewById(R.id.pending);
+        ApproveCV = findViewById(R.id.approve);
+        RejectedCV = findViewById(R.id.rejected);
 
         fStore = FirebaseFirestore.getInstance();
         pd = new ProgressDialog(this);
@@ -169,6 +178,28 @@ public class AdminViewBonafiteData extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
 
                 return true;
+            }
+        });
+
+
+        PendingCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Pending_Activity.class));
+            }
+        });
+
+        ApproveCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Approve_Activity.class));
+            }
+        });
+
+        RejectedCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Rejected_Activity.class));
             }
         });
 
