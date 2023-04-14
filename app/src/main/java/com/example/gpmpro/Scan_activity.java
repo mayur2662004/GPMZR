@@ -26,7 +26,6 @@ import com.journeyapps.barcodescanner.ScanOptions;
 
 public class Scan_activity extends AppCompatActivity {
 
-
     WebView wb;
     CardView bonafide;
 
@@ -58,8 +57,12 @@ public class Scan_activity extends AppCompatActivity {
 
 
 //               ScanCode();
+<<<<<<< HEAD
                startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
 
+=======
+               startActivity(new Intent(getApplicationContext(),Student_profile.class));
+>>>>>>> 5bcff2dd319dc3d3e1906780608dba67c0b6dec6
            }
        });
 

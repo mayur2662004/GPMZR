@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,9 +37,7 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
     TextView rg_new_user,log_already_register;
     Button btn_reg,btn_log;
 
-
     StorageReference storageReference;
-
     FirebaseFirestore firebaseFirestore;
 
     FirebaseAuth firebaseAuth;
@@ -51,25 +48,17 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registretoin);
 
-
         firebaseAuth = FirebaseAuth.getInstance();
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-
-
         rg_full_name = findViewById(R.id.full_name_reg);
         rg_email = findViewById(R.id.email_reg);
         rg_pass = findViewById(R.id.password_reg);
         rg_phone = findViewById(R.id.phono_reg);
         log_already_register = findViewById(R.id.tv_alredy_reg);
 
-
-
         rg_new_user = findViewById(R.id.tv_newuser_reg);
-
         btn_reg = findViewById(R.id.RegisterBtn);
-
-
         log_already_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,8 +66,6 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
                 finish();
             }
         });
-
-
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +76,6 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
                 String phone = rg_phone.getText().toString().trim();
                 if (name.isEmpty()){
                     rg_full_name.setError("Full Name is Required!");
-
                 }
                 else if (email.isEmpty()){
                     rg_email.setError("Email Address is Required !");
@@ -104,27 +90,17 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
                     rg_pass.setError("Password Must be greater than 8 Character");
                 } else if(phone.isEmpty()){
                     rg_phone.setError("Phone No Required ! ");
-
                 }
                 else if (phone.isEmpty()){
                     rg_phone.setError("Please Enter Valid Mobile No.");
-
                 }
                 else {
+                    Toast.makeText(Student_Registretoin_Activity.this, "Registration is  Successfully.", Toast.LENGTH_SHORT).show();
+//                    addData()
                     addToFirebase(name,email,pass,phone);
                 }
-
-
-
             }
         });
-
-
-
-
-
-
-
     }
 
     private void addToFirebase(String name, String email, String pass, String phone) {

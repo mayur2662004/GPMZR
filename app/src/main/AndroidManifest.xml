@@ -5,8 +5,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -15,14 +19,25 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:requestLegacyExternalStorage="true"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.GPMPRO"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        tools:ignore="ExtraText">
+        <activity
+<<<<<<< HEAD
+            android:name=".StudentProfileEdit"
+            android:exported="false" />
         <activity
             android:name=".Student_profile"
             android:exported="false" />
+=======
+            android:name=".Adimin_Login_Activity"
+            android:exported="false" >
+
+        </activity>
+>>>>>>> 0082e586c4f187a78f024e522cecffaf4b9b8eed
         <activity
             android:name=".Approve_Activity"
             android:exported="false" />
@@ -37,13 +52,16 @@
             android:exported="false" />
         <activity
             android:name=".Student_Registretoin_Activity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".AdminViewBonafiteData"
             android:exported="false" />
         <activity
             android:name=".AdminViewSpecificData"
+            android:exported="false" />
+
+        <activity
+            android:name=".Student_profile"
             android:exported="false" />
         <activity
             android:name=".BonafiteCertificateForm"
@@ -54,7 +72,7 @@
             android:exported="false" />
         <activity
             android:name=".Scan_activity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
