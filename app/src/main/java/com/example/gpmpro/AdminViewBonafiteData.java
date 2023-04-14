@@ -300,7 +300,9 @@ public class AdminViewBonafiteData extends AppCompatActivity {
 
         paint.setTextSize(10f);
 
-        canvas.drawText("No:GPMZR//SS/BONA/20     /",205,100,paint);
+        String y = years.replace("-","/");
+
+        canvas.drawText("No:GPMZR//SS/BONA/"+y,205,100,paint);
         canvas.drawText("Date:",205,120,paint);
         paint.setTextSize(12f);
         paint.setTextSize(14f);
@@ -308,16 +310,45 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         canvas.drawText("Bonafide Certificate",110,140,paint);
         paint.setTextSize(12f);
         paint.setFakeBoldText(false);
-        if (modelList.get(i).getAllName().length() < 30 ){
-            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is",40,165,paint);
-            canvas.drawText("a student of this institute during the year "+years+" studying  in",10,185,paint);
-            canvas.drawText(modelList.get(i).getYears()+" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        if (modelList.get(i).getAllName().length() < 15 ){
+            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is a student of this",40,165,paint);
+            canvas.drawText("institute during the year "+years+" studying  in "+ modelList.get(i).getYears() +" of",18,185,paint);
+            canvas.drawText("Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",18,205,paint);
         }
-        else {
-            canvas.drawText("This is to certify that "+ modelList.get(i).getName() +" "+modelList.get(i).getMiddleName() ,40,165,paint);
-            canvas.drawText( modelList.get(i).getSurName()+" is a student of this institute during ",10,185,paint);
-            canvas.drawText("the year "+years+" studying  in "+modelList.get(i).getYears()+" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        else if(modelList.get(i).getAllName().length() < 12){
+            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is a student of this",40,165,paint);
+            canvas.drawText("institute during the year "+years+" studying  in "+ modelList.get(i).getYears(),20,185,paint);
+            canvas.drawText("of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",20,205,paint);
+        } else if (modelList.get(i).getAllName().length() <=20) {
+            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is a student ",40,165,paint);
+            canvas.drawText("of this institute during the year "+years+" studying  in "+ modelList.get(i).getYears(),15,185,paint);
+            canvas.drawText("of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",15,205,paint);
         }
+        else if(modelList.get(i).getAllName().length() < 25){
+            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is a ",40,165,paint);
+            canvas.drawText(" student of this institute during the year "+years+" studying ",15,185,paint);
+            canvas.drawText(modelList.get(i).getYears()+" in of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",15,205,paint);
+        }
+        else if(modelList.get(i).getAllName().length() < 30){
+            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName() ,40,165,paint);
+            canvas.drawText("is a student of this institute during the year "+years+" studying ",15,185,paint);
+            canvas.drawText( "in "+ modelList.get(i).getYears() + " of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",15,205,paint);
+        }
+        else if(modelList.get(i).getAllName().length() < 35){
+            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName() ,30,165,paint);
+            canvas.drawText("is a student of this institute during the year "+years+" studying ",10,185,paint);
+            canvas.drawText( "in "+ modelList.get(i).getYears() + " of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        }
+        else if (modelList.get(i).getAllName().length() < 40){
+            canvas.drawText("This is to certify that "+ modelList.get(i).getName()+" "+modelList.get(i).getMiddleName() ,40,165,paint);
+            canvas.drawText(modelList.get(i).getSurName()+" is a student of this institute during the year ",15,185,paint);
+            canvas.drawText(years+" studying in " + modelList.get(i).getYears() +" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",15,205,paint);
+        }
+
+
+
+
+
 
         canvas.drawText("For:His/Her Own Request ",10,260,paint);
         canvas.drawText("Principal",270,260,paint);

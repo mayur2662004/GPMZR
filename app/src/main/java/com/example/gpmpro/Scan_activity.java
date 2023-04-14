@@ -42,7 +42,6 @@ public class Scan_activity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
 
-<<<<<<< HEAD
                ScanCode();
 //               startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
 
@@ -58,10 +57,9 @@ public class Scan_activity extends AppCompatActivity {
                startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
 
 
-=======
 //               ScanCode();
                startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
->>>>>>> 41e8aec40b8cdfcd77476c542a1fde2598201a00
+
            }
        });
 
