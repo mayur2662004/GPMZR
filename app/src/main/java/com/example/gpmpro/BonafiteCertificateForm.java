@@ -14,6 +14,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -27,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -50,7 +53,6 @@ public class BonafiteCertificateForm extends AppCompatActivity {
     EditText et_name_of_std, et_name_of_middle, et_name_of_last, et_name_of_enroll_num, et_sub;
     TextView tv_upload_file,tv_date;
     Button btn_submit;
-//    RadioButton rd_civil, rb_co, rb_it, rb_mech, rb_ee;
 
     String branchinfo,Yearinfo;
     RadioGroup rg,rg_year;
@@ -73,6 +75,15 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
 
     Boolean checkItUpload = true;
+    String[] arr = { "1st sem", "2nd Sem","3rd Sem","4th Sem", "5th Sem","6th Sem"};
+
+    AutoCompleteTextView autocomplete;
+
+
+    FirebaseAuth mAuth;
+
+    String emailId;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -82,8 +93,19 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
+        autocomplete = (AutoCompleteTextView)
+                findViewById(R.id.autoCompleteTextView1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item, arr);
+
+        autocomplete.setThreshold(2);
+        autocomplete.setAdapter(adapter);
 
         storageReference = FirebaseStorage.getInstance().getReference();
+
+        mAuth = FirebaseAuth.getInstance();
+        emailId = mAuth.getCurrentUser().getUid();
+
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         userID = UUID.randomUUID().toString();
@@ -95,7 +117,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         et_name_of_enroll_num = findViewById(R.id.Et_enroll_num);
         et_sub = findViewById(R.id.Et_sub);
         rg = findViewById(R.id.ed);
-        rg_year = findViewById(R.id.year);
+//        rg_year = findViewById(R.id.sem);
 
         pd = ProgressDialog.show(this,"Loading ...","Please Wait",false,false);
         pd.dismiss();
@@ -132,16 +154,16 @@ public class BonafiteCertificateForm extends AppCompatActivity {
             }
         });
 
-        rg_year.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                int radioButtonID = rg_year.getCheckedRadioButtonId();
-                View radioButton = rg_year.findViewById(radioButtonID);
-                int idc = rg_year.indexOfChild(radioButton);
-                RadioButton r = (RadioButton)  rg_year.getChildAt(idc);
-                Yearinfo = r.getText().toString().trim();
-            }
-        });
+//        rg_year.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                int radioButtonID = rg_year.getCheckedRadioButtonId();
+//                View radioButton = rg_year.findViewById(radioButtonID);
+//                int idc = rg_year.indexOfChild(radioButton);
+//                RadioButton r = (RadioButton)  rg_year.getChildAt(idc);
+//                Yearinfo = r.getText().toString().trim();
+//            }
+//        });
 
 
         //It for date
@@ -202,7 +224,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
                 String date = tv_date.getText().toString().trim();
                 String enrollmentno = et_name_of_enroll_num.getText().toString().trim();
                 String branch = branchinfo;
-                String year = Yearinfo;
+                String year = autocomplete.getText().toString().trim();
                 String subject = et_sub.getText().toString().trim();
 
                 if (name.isEmpty()) {
@@ -223,8 +245,8 @@ public class BonafiteCertificateForm extends AppCompatActivity {
                     Toast.makeText(BonafiteCertificateForm.this, "Branch is " + rq, Toast.LENGTH_SHORT).show();
 
                 }
-                else if (Yearinfo == null) {
-                    Toast.makeText(BonafiteCertificateForm.this, "Year is " + rq, Toast.LENGTH_SHORT).show();
+                else if (autocomplete.equals("")) {
+                    Toast.makeText(BonafiteCertificateForm.this, "Sem " + rq, Toast.LENGTH_SHORT).show();
 
                 }
                 else if (subject.isEmpty()) {
@@ -256,14 +278,15 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         map.put("Year",year);
         map.put("Subject",subject);
         map.put("Verify","False");
-
         map.put("AllName",name+" "+middelname+" "+lastname);
+        map.put("UserId",emailId);
+        map.put("Note","");
 
         firebaseFirestore.collection("StudentBonafiteCertificateApplicationForm").document(userID).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(BonafiteCertificateForm.this, "You Application send Successfully", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),AdminViewBonafiteData.class));
+                startActivity(new Intent(getApplicationContext(),Scan_activity.class));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -276,8 +299,6 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-
 
         if (requestCode == 1 && resultCode == RESULT_OK && data!=null&&data.getData()!=null){
             uploadpdfToFirebase(data.getData());

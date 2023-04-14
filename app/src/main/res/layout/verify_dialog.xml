@@ -62,7 +62,7 @@
                         android:id="@+id/no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NO"
+                        android:text="NO! Reject"
                         android:backgroundTint="@color/purple_700"
                         android:layout_marginRight="40dp"
                         />
@@ -71,7 +71,7 @@
                         android:id="@+id/yes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Yes"
+                        android:text="Yes! Approve"
                         android:backgroundTint="#29F112"
                         />
                 </LinearLayout>

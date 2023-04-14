@@ -13,7 +13,7 @@
         android:gravity="center"
         android:orientation="vertical">
         <androidx.cardview.widget.CardView
-            android:layout_width="350sp"
+            android:layout_width="400sp"
             android:layout_height="wrap_content"
             android:layout_margin="20sp"
             app:cardCornerRadius="20sp"
@@ -34,48 +34,52 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:layout_marginTop="25sp"
+                    android:layout_marginTop="8sp"
                     android:textColor="@color/teal_200"
-                    android:text="Verification Code"/>
+                    android:text="Why you rejecte this?"/>
 
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="10sp"
-                android:layout_marginBottom="10dp">
-                <EditText
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/Et_verification_code"
-                    android:hint="Verification code"
-                    android:layout_gravity="center"
-                    android:inputType="number"
-                    android:padding="3dp"
-                    android:textSize="20dp"
-                    android:layout_marginHorizontal="10dp"/>
-            </LinearLayout>
+                    android:layout_margin="5sp"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@color/black"
+                    android:layout_gravity="start"
+                    android:hint="Note">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/note"
+                        android:layout_width="match_parent"
+                        android:layout_height="200sp"
+                        android:inputType="text"
+                        android:textColorHint="@color/black"
+                        android:maxLines="8"
+                        android:gravity="start"
+                        android:textColor="#000000" />
 
-            <LinearLayout
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="10sp"
-                    android:layout_marginBottom="10dp">
+                    android:gravity="end"
+                    android:layout_margin="10sp">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/yes"
+                        android:id="@+id/submit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Yes"
-                        android:backgroundTint="#29F112"
-                        />
+                        android:text="Submit"
+                        android:layout_margin="8sp"
+                        app:cornerRadius="9sp"
+                        android:backgroundTint="#29F112" />
                 </LinearLayout>
+
+
+
+
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

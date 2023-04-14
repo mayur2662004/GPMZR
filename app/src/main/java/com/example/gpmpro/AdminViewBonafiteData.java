@@ -3,14 +3,17 @@ package com.example.gpmpro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -22,6 +25,8 @@ import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,6 +43,10 @@ import java.util.List;
 
 public class AdminViewBonafiteData extends AppCompatActivity {
 
+    TextView Pending,Approve,Rejected;
+
+    CardView PendingCV,ApproveCV,RejectedCV;
+
     // For retrieving data from firebase i
     List<BonafiteModel> modelList = new ArrayList<>();
     RecyclerView recyclerView;
@@ -52,11 +61,26 @@ public class AdminViewBonafiteData extends AppCompatActivity {
 
     SwipeRefreshLayout refreshLayout;
 
+    float sum = 0;
+    float sumAppo = 0;
+    float sumRej = 0;
+
+    int nextDate = 0;
+
+    String years;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_bonafite_data);
+
+        Pending = findViewById(R.id.tv_pending);
+        Approve = findViewById(R.id.tv_approve);
+        Rejected = findViewById(R.id.tv_rejected);
+
+        PendingCV = findViewById(R.id.pending);
+        ApproveCV = findViewById(R.id.approve);
+        RejectedCV = findViewById(R.id.rejected);
 
         fStore = FirebaseFirestore.getInstance();
         pd = new ProgressDialog(this);
@@ -65,9 +89,10 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        modelList.clear();
+        modelList.clear();
         showData();
 
+        ActivityCompat.requestPermissions(AdminViewBonafiteData.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
         refreshLayout = findViewById(R.id.refresh);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -75,6 +100,40 @@ public class AdminViewBonafiteData extends AppCompatActivity {
             public void onRefresh() {
                 showData();
                 refreshLayout.setRefreshing(false);
+
+                if (sum < modelList.size() && sum<=0){
+                    for (int i=0;i<modelList.size();i++){
+                        if (modelList.get(i).getVerify().equalsIgnoreCase("False")){
+                            sum = sum + 1;
+
+                        }
+                    }
+                }
+
+
+                if (sumAppo < modelList.size() && sumAppo<=0){
+                    for (int i=0;i<modelList.size();i++){
+                        if (modelList.get(i).getVerify().equalsIgnoreCase("True")){
+                            sumAppo = sumAppo + 1;
+
+                        }
+                    }
+                }
+
+                if (sumRej < modelList.size() && sumRej<=0){
+                    for (int i=0;i<modelList.size();i++){
+                        if (modelList.get(i).getVerify().equalsIgnoreCase("Rejected")){
+                            sumRej = sumRej + 1;
+                        }
+                    }
+                }
+
+
+                Pending.setText(String.valueOf(sum));
+                Approve.setText(String.valueOf(sumAppo));
+                Rejected.setText(String.valueOf(sumRej));
+
+
             }
         });
 
@@ -125,6 +184,29 @@ public class AdminViewBonafiteData extends AppCompatActivity {
             }
         });
 
+
+        PendingCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Pending_Activity.class));
+            }
+        });
+
+        ApproveCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Approve_Activity.class));
+            }
+        });
+
+        RejectedCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Rejected_Activity.class));
+            }
+        });
+
+
     }
 
     private void showData() {
@@ -147,7 +229,9 @@ public class AdminViewBonafiteData extends AppCompatActivity {
                                     doc.getString("Year"),
                                     doc.getString("Subject"),
                                     doc.getString("Verify"),
-                                    doc.getString("AllName")
+                                    doc.getString("AllName"),
+                                    doc.getString("UserId"),
+                                    doc.getString("Note")
                             );
                             modelList.add(model);
                         }
@@ -159,11 +243,24 @@ public class AdminViewBonafiteData extends AppCompatActivity {
 
     public void downloandPdf(int i) {
 
+        String date = modelList.get(i).getDate();
+        int finalDate = Integer.parseInt(date.substring(2,4));
 
+        String sem = modelList.get(i).getYears();
+        int finalSem = Integer.parseInt(sem.substring(0,1));
 
-       Bitmap bmp= BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
-       Bitmap bms=BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
-       Bitmap scalebitmap=Bitmap.createScaledBitmap(bmp,50,30,false);
+        if (finalSem%2==0){
+            nextDate = finalDate - 1;
+            years = "20"+nextDate+"-"+finalDate;
+        }
+        else {
+            nextDate = finalDate + 1;
+            years = "20"+finalDate+"-"+nextDate;
+        }
+
+        Bitmap bmp= BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
+        Bitmap bms=BitmapFactory.decodeResource(getResources(),R.drawable.mabte);
+        Bitmap scalebitmap=Bitmap.createScaledBitmap(bmp,50,30,false);
         Bitmap msbtebitmap=Bitmap.createScaledBitmap(bms,50,30,false);
 
         PdfDocument mypdfdocument=new PdfDocument();
@@ -201,7 +298,6 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         paint.setStrokeWidth(0);
         canvas.drawLine(0,85,360,85,paint);
 
-
         paint.setTextSize(10f);
 
         canvas.drawText("No:GPMZR//SS/BONA/20     /",205,100,paint);
@@ -212,27 +308,36 @@ public class AdminViewBonafiteData extends AppCompatActivity {
         canvas.drawText("Bonafide Certificate",110,140,paint);
         paint.setTextSize(12f);
         paint.setFakeBoldText(false);
-        canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is a",40,165,paint);
-        canvas.drawText("student of this institute during the year  20    -      studying  in",10,185,paint);
-        canvas.drawText("___________th sem of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        if (modelList.get(i).getAllName().length() < 30 ){
+            canvas.drawText("This is to certify that "+ modelList.get(i).getAllName()  +" is",40,165,paint);
+            canvas.drawText("a student of this institute during the year "+years+" studying  in",10,185,paint);
+            canvas.drawText(modelList.get(i).getYears()+" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        }
+        else {
+            canvas.drawText("This is to certify that "+ modelList.get(i).getName() +" "+modelList.get(i).getMiddleName() ,40,165,paint);
+            canvas.drawText( modelList.get(i).getSurName()+" is a student of this institute during ",10,185,paint);
+            canvas.drawText("the year "+years+" studying  in "+modelList.get(i).getYears()+" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",10,205,paint);
+        }
+
         canvas.drawText("For:His/Her Own Request ",10,260,paint);
         canvas.drawText("Principal",270,260,paint);
 
-
         mypdfdocument.finishPage(mypage);
         String folderName = "Student Information";
-        String fileName = "Student info.pdf";
+        String fileName = modelList.get(i).getEnrollmentNo()+" Bonafite.pdf";
 
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + folderName + File.separator + fileName;
 
         File file=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + folderName);
 
-        if (!file.exists()){
-            file.mkdirs();
-        }
+//        if (!file.exists()){
+//            file.mkdirs();
+//        }
+
         try {
+            file.mkdirs();
             mypdfdocument.writeTo(new FileOutputStream(path));
-            Toast.makeText(AdminViewBonafiteData.this, "Priting ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminViewBonafiteData.this, "Printing ", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -242,5 +347,4 @@ public class AdminViewBonafiteData extends AppCompatActivity {
 
 
     }
-
 }
