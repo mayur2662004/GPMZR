@@ -5,18 +5,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<<<<<<< HEAD
-<<<<<<< HEAD
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-=======
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-=======
->>>>>>> d4cfc5b1808c7a701881e1993df4dff7fab353a8
-=======
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
->>>>>>> 757f6bb16557dfa67adf6a757c554f0680ad133e
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -33,33 +25,19 @@
         tools:targetApi="31"
         tools:ignore="ExtraText">
         <activity
-<<<<<<< HEAD
-<<<<<<< HEAD
             android:name=".Adimin_Login_Activity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 757f6bb16557dfa67adf6a757c554f0680ad133e
-            android:name=".Student_profile"
-            android:exported="false" />
         <activity
             android:name=".Approve_Activity"
             android:exported="false" />
->>>>>>> d4cfc5b1808c7a701881e1993df4dff7fab353a8
         <activity
             android:name=".Rejected_Activity"
             android:exported="false" />
         <activity
             android:name=".Pending_Activity"
             android:exported="false" />
->>>>>>> 6dd7c7cfd4333ad8027067a26786634b68cf6319
         <activity
             android:name=".Student_Login_Activity"
             android:exported="false" />
@@ -73,6 +51,10 @@
         <activity
             android:name=".AdminViewSpecificData"
             android:exported="false" />
+
+        <activity
+            android:name=".Student_profile"
+            android:exported="false" />
         <activity
             android:name=".BonafiteCertificateForm"
             android:exported="false"
@@ -82,17 +64,13 @@
             android:exported="false" />
         <activity
             android:name=".Scan_activity"
-<<<<<<< HEAD
-            android:exported="false"/>
-=======
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
->>>>>>> 757f6bb16557dfa67adf6a757c554f0680ad133e
         <activity
             android:name=".CaptureAct"
             android:screenOrientation="portrait"

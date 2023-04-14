@@ -6,94 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".Student_profile"
     android:background="@color/purple_200">
-<ImageView
-    android:layout_width="400dp"
-    android:layout_height="400dp"
-    android:src="@drawable/gpm_logo_background"
-    android:layout_centerInParent="true"/>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="20dp">
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:iconifiedByDefault="false"
-        app:queryHint="Search Here ..."
-        android:background="@drawable/card_border"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="10dp"/>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginTop="80dp">
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refresh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12sp"
-        tools:ignore="DuplicateIds">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recycleview_in_adminpage"/>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:gravity="right">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryHint="Search Here ..."
+            android:backgroundTint="@color/white"
+            android:background="@drawable/card_border"
+            android:layout_marginHorizontal="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left">
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="right"
+            android:orientation="horizontal"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Status"
-                android:layout_gravity="left"
-                android:gravity="left"/>
+                android:text="Scan Now"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="30dp"
+                android:gravity="left"
+                android:drawableEnd="r"/>
+
+            <ImageView
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:background="@drawable/card_border"
+                android:padding="5dp"
+                android:src="@drawable/scan"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="right"
+                android:foregroundGravity="center"
+                />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:src="@drawable/scan"
-            android:layout_gravity="right"
-            />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/stud_pro_shape"
-        android:layout_marginTop="60dp">
-        <ImageView
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:src="@drawable/gpm_logo_background"
-            android:layout_centerInParent="true"/>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/refresh"
+            android:background="@drawable/stud_pro_shape"
+            android:layout_marginTop="20dp">
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:src="@drawable/gpm_logo_background"
+                android:layout_centerInParent="true"/>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30sp">
-
-                <androidx.recyclerview.widget.RecyclerView
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/refresh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recycleview_in_adminpage"/>
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+                    android:layout_marginTop="30sp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recycleview_in_adminpage"/>
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
 </RelativeLayout>
