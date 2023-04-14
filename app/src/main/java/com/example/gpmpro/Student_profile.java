@@ -30,7 +30,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student_profile extends AppCompatActivity {
+public class
+Student_profile extends AppCompatActivity {
 
     // For retrieving data from firebase i
     List<BonafiteModel> modelList = new ArrayList<>();

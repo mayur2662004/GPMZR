@@ -37,10 +37,10 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="30dp"
-                android:gravity="left"
-                android:drawableEnd="r"/>
+                android:gravity="left"/>
 
             <ImageView
+                android:id="@+id/scan"
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 android:background="@drawable/card_border"
@@ -57,11 +57,12 @@
             android:layout_height="match_parent"
             android:background="@drawable/stud_pro_shape"
             android:layout_marginTop="20dp">
+
             <ImageView
                 android:layout_width="400dp"
                 android:layout_height="400dp"
-                android:src="@drawable/gpm_logo_background"
-                android:layout_centerInParent="true"/>
+                android:layout_centerInParent="true"
+                android:src="@drawable/gpm_logo_background" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -70,15 +71,15 @@
                     android:id="@+id/refresh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30sp">
+                    android:layout_marginTop="10sp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/recycleview_in_adminpage"/>
+                        android:id="@+id/recycleview_in_adminpage"
+                        android:background="@drawable/recycle_shape"/>
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             </LinearLayout>
         </RelativeLayout>
-
     </LinearLayout>
 </RelativeLayout>
