@@ -1,5 +1,4 @@
 package com.example.gpmpro;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -8,16 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 public class BonafiteCertificateAdapterForRejectedAcivity extends RecyclerView.Adapter<BonafiteCertifateViewHolder> {
-
     Rejected_Activity adminViewBonafiteData;
     List<BonafiteModel> modelList;
 
