@@ -63,14 +63,12 @@ public class AdminViewSpecificData extends AppCompatActivity {
     TextView showStatus;
 
     String pdfURl;
-
+    FirebaseFirestore firebaseFirestore;
 
     Dialog dialog,dialogReject;
 
 
     MaterialButton no,yes;
-
-    FirebaseFirestore firebaseFirestore;
 
     TextInputEditText note;
     MaterialButton btn;

@@ -81,7 +81,6 @@ public class BonafiteCertificateAdapterForRejectedAcivity extends RecyclerView.A
 
         String verify = modelList.get(i).getVerify();
 
-
         if (verify.equalsIgnoreCase("False")){
             holder.verify.setImageResource(R.drawable.pending_logo);
         }
@@ -90,20 +89,9 @@ public class BonafiteCertificateAdapterForRejectedAcivity extends RecyclerView.A
         }
         else if (verify.equalsIgnoreCase("Rejected")){
             holder.verify.setImageResource(R.drawable.wrong_logo_new);
-            holder.downloadPdf.setVisibility(View.GONE);
         }
 
-
-
-        // This is for download PDF application form of bonafite certificate
-        holder.downloadPdf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(adminViewBonafiteData, "Sorry we can`t download this pdf", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+        holder.downloadPdf.setVisibility(View.GONE);
 
     }
 

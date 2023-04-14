@@ -43,7 +43,6 @@ import java.util.List;
 
 public class AdminViewBonafiteData extends AppCompatActivity {
 
-    TextView Pending,Approve,Rejected;
 
     CardView PendingCV,ApproveCV,RejectedCV;
 
@@ -61,10 +60,6 @@ public class AdminViewBonafiteData extends AppCompatActivity {
 
     SwipeRefreshLayout refreshLayout;
 
-    float sum = 0;
-    float sumAppo = 0;
-    float sumRej = 0;
-
     int nextDate = 0;
 
     String years;
@@ -73,10 +68,6 @@ public class AdminViewBonafiteData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_bonafite_data);
-
-        Pending = findViewById(R.id.tv_pending);
-        Approve = findViewById(R.id.tv_approve);
-        Rejected = findViewById(R.id.tv_rejected);
 
         PendingCV = findViewById(R.id.pending);
         ApproveCV = findViewById(R.id.approve);
@@ -100,39 +91,6 @@ public class AdminViewBonafiteData extends AppCompatActivity {
             public void onRefresh() {
                 showData();
                 refreshLayout.setRefreshing(false);
-
-                if (sum < modelList.size() && sum<=0){
-                    for (int i=0;i<modelList.size();i++){
-                        if (modelList.get(i).getVerify().equalsIgnoreCase("False")){
-                            sum = sum + 1;
-
-                        }
-                    }
-                }
-
-
-                if (sumAppo < modelList.size() && sumAppo<=0){
-                    for (int i=0;i<modelList.size();i++){
-                        if (modelList.get(i).getVerify().equalsIgnoreCase("True")){
-                            sumAppo = sumAppo + 1;
-
-                        }
-                    }
-                }
-
-                if (sumRej < modelList.size() && sumRej<=0){
-                    for (int i=0;i<modelList.size();i++){
-                        if (modelList.get(i).getVerify().equalsIgnoreCase("Rejected")){
-                            sumRej = sumRej + 1;
-                        }
-                    }
-                }
-
-
-                Pending.setText(String.valueOf(sum));
-                Approve.setText(String.valueOf(sumAppo));
-                Rejected.setText(String.valueOf(sumRej));
-
 
             }
         });

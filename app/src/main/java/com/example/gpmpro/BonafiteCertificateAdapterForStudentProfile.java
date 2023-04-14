@@ -16,12 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class BonafiteCertificateAdapterForApproveAcivity extends RecyclerView.Adapter<BonafiteCertifateViewHolder> {
+public class BonafiteCertificateAdapterForStudentProfile extends RecyclerView.Adapter<BonafiteCertifateViewHolder> {
 
-    Approve_Activity adminViewBonafiteData;
+    Student_profile adminViewBonafiteData;
     List<BonafiteModel> modelList;
 
-    public BonafiteCertificateAdapterForApproveAcivity(Approve_Activity adminViewBonafiteData, List<BonafiteModel> modelList) {
+    public BonafiteCertificateAdapterForStudentProfile(Student_profile adminViewBonafiteData, List<BonafiteModel> modelList) {
         this.adminViewBonafiteData = adminViewBonafiteData;
         this.modelList = modelList;
     }
@@ -46,7 +46,7 @@ public class BonafiteCertificateAdapterForApproveAcivity extends RecyclerView.Ad
                 String subject = modelList.get(position).getSubject();
                 String verify = modelList.get(position).getVerify();
 
-                Intent intent = new Intent(adminViewBonafiteData,AdminViewSpecificData.class);
+                Intent intent = new Intent(adminViewBonafiteData,StudentProfileEdit.class);
                 intent.putExtra("Id",id);
                 intent.putExtra("Name",name);
                 intent.putExtra("MiddleName",middleName);
@@ -92,27 +92,8 @@ public class BonafiteCertificateAdapterForApproveAcivity extends RecyclerView.Ad
             holder.verify.setImageResource(R.drawable.wrong_logo_new);
         }
 
-//        holder.downloadPdf.setVisibility(View.GONE);
-        holder.downloadPdf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String verify = modelList.get(i).getVerify();
-                if (verify.equalsIgnoreCase("False")){
-                    Toast.makeText(adminViewBonafiteData, "Please Verify First!!", Toast.LENGTH_LONG).show();
-                }
-                else {
+        holder.downloadPdf.setVisibility(View.GONE);
 
-                    if (ContextCompat.checkSelfPermission(adminViewBonafiteData, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(adminViewBonafiteData, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                        adminViewBonafiteData.downloandPdf(i);
-                    }
-                    else {
-                        adminViewBonafiteData.downloandPdf(i);
-                    }
-
-                }
-            }
-        });
 
     }
 
