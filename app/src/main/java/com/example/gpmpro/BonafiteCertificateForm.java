@@ -93,10 +93,8 @@ public class BonafiteCertificateForm extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        autocomplete = (AutoCompleteTextView)
-                findViewById(R.id.autoCompleteTextView1);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this,android.R.layout.select_dialog_item, arr);
+        autocomplete =  findViewById(R.id.autoCompleteTextView1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_item, arr);
 
         autocomplete.setThreshold(2);
         autocomplete.setAdapter(adapter);

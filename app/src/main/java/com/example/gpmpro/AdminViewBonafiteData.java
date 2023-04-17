@@ -303,25 +303,22 @@ public class AdminViewBonafiteData extends AppCompatActivity {
             canvas.drawText(years+" studying in " + modelList.get(i).getYears() +" of Diploma Course in "+modelList.get(i).getBranch() +" Engg. ",15,205,paint);
         }
 
-
-
-
-
-
         canvas.drawText("For:His/Her Own Request ",10,260,paint);
         canvas.drawText("Principal",270,260,paint);
 
         mypdfdocument.finishPage(mypage);
-        String folderName = "Student Information";
+        String folderName = "GPMZR Student Bonafite";
+        String subFolderName = modelList.get(i).getBranch();
+        String subSubFolder = modelList.get(i).getYears();
         String fileName = modelList.get(i).getEnrollmentNo()+" Bonafite.pdf";
 
-        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + folderName + File.separator + fileName;
+        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + folderName + File.separator  + subFolderName + File.separator + subSubFolder + File.separator+ fileName;
 
-        File file=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + folderName);
+        File file=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + folderName+ File.separator + subFolderName + File.separator+ subSubFolder);
 
-//        if (!file.exists()){
-//            file.mkdirs();
-//        }
+        if (!file.exists()){
+            file.mkdirs();
+        }
 
         try {
             file.mkdirs();

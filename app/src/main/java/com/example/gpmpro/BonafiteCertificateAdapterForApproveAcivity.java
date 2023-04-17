@@ -92,9 +92,7 @@ public class BonafiteCertificateAdapterForApproveAcivity extends RecyclerView.Ad
             holder.verify.setImageResource(R.drawable.wrong_logo_new);
         }
 
-<<<<<<< HEAD
 //        holder.downloadPdf.setVisibility(View.GONE);
-=======
 
         // This is for verifying application form of bonafite certificate
         holder.verify.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +109,7 @@ public class BonafiteCertificateAdapterForApproveAcivity extends RecyclerView.Ad
         });
 
           // This is for download PDF application form of bonafite certificate
->>>>>>> 0082e586c4f187a78f024e522cecffaf4b9b8eed
+
         holder.downloadPdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

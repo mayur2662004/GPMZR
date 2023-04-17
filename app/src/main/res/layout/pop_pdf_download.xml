@@ -26,7 +26,8 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical">
-<TextView
+
+                <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Select To Download Bonafite..."
@@ -38,29 +39,63 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:gravity="center"
                     android:layout_marginTop="10sp"
                     android:layout_marginBottom="10dp">
-                    <AutoCompleteTextView
-                        android:text="Select "
-                        android:backgroundTint="@color/white"
-                        android:id="@+id/autoCompleteTextView1"
-                        android:layout_width="wrap_content"
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:textColor="@color/black"
-                        android:layout_weight="1"/>
+                        android:orientation="horizontal"
+                        android:id="@+id/ed"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_co"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CO"
+                            android:layout_marginRight="10dp"/>
+                        <RadioButton android:id="@+id/radio_it"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="IT"
+                            android:layout_marginRight="10dp"
+                            />
+                        <RadioButton android:id="@+id/radio_Mech"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ME"
+                            android:layout_marginRight="10dp"/>
+                        <RadioButton android:id="@+id/radio_ele"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="EE"
+                            android:layout_marginRight="10dp"/>
 
-<!--                    <com.google.android.material.button.MaterialButton-->
-<!--                        android:id="@+id/yes"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        />-->
+                        <RadioButton android:id="@+id/radio_civil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CE"
+                            android:layout_marginRight="10dp"/>
+                    </RadioGroup>
+
+
+                    <Spinner
+                        android:id="@+id/sem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:entries="@array/Select"
+                        android:layout_marginTop="10dp"
+                        />
+
+
 
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/download"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="10dp"

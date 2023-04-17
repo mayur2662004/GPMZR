@@ -26,18 +26,11 @@
         tools:targetApi="31"
         tools:ignore="ExtraText">
         <activity
-<<<<<<< HEAD
             android:name=".StudentProfileEdit"
             android:exported="false" />
         <activity
             android:name=".Student_profile"
             android:exported="false" />
-=======
-            android:name=".Adimin_Login_Activity"
-            android:exported="false" >
-
-        </activity>
->>>>>>> 0082e586c4f187a78f024e522cecffaf4b9b8eed
         <activity
             android:name=".Approve_Activity"
             android:exported="false" />
@@ -60,9 +53,6 @@
             android:name=".AdminViewSpecificData"
             android:exported="false" />
 
-        <activity
-            android:name=".Student_profile"
-            android:exported="false" />
         <activity
             android:name=".BonafiteCertificateForm"
             android:exported="false"
