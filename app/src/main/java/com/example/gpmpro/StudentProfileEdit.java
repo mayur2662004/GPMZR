@@ -3,7 +3,9 @@ package com.example.gpmpro;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.dynamite.DynamiteModule;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
@@ -36,6 +39,7 @@ import java.util.Map;
 
 public class StudentProfileEdit extends AppCompatActivity {
 
+    CardView showPdf;
 
 
     WebView pdf;
@@ -50,7 +54,7 @@ public class StudentProfileEdit extends AppCompatActivity {
     String pdfURl;
     FirebaseFirestore firebaseFirestore;
 
-    Dialog dialogReject;
+    Dialog dialogReject,dialogPdf;
 
     TextView date,subject,name,enrollment,branch,year;
     String id,verify,emailId;
@@ -58,6 +62,7 @@ public class StudentProfileEdit extends AppCompatActivity {
     String nameS,middleS,lastNameS;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +136,15 @@ public class StudentProfileEdit extends AppCompatActivity {
             showDialogIn();
         }
 
+        showPdf = findViewById(R.id.showPdf);
+
+        showPdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDilog();
+            }
+        });
+
 
 
         StorageReference profileRef = storageReference.child("Uploads/" + id + "Bonafite.pdf");
@@ -154,6 +168,45 @@ public class StudentProfileEdit extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void showDilog() {
+        dialogPdf = new Dialog(this);
+        dialogPdf.setContentView(R.layout.pdf);
+        dialogPdf.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogPdf.getWindow().setBackgroundDrawable(getDrawable(R.drawable.back_background));
+        dialogPdf.show();
+
+        ImageView imageView = dialogPdf.findViewById(R.id.close);
+        WebView pdf = dialogPdf.findViewById(R.id.pdf);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogPdf.dismiss();
+            }
+        });
+
+        StorageReference profileRef = storageReference.child("Uploads/" + id + "Bonafite.pdf");
+        pd.show();
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                try {
+                    pdfURl = URLEncoder.encode(String.valueOf(uri),"UTF-8");
+                }
+                catch (Exception e){
+                    Toast.makeText(StudentProfileEdit.this, "Url Exception : "+e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                pdf.loadUrl("https://docs.google.com/gview?embedded=true&url="+pdfURl);
+                pd.dismiss();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+            }
+        });
 
     }
 

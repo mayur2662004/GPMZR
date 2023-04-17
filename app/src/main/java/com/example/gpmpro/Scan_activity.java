@@ -42,6 +42,7 @@ public class Scan_activity extends AppCompatActivity {
            public void onClick(View view) {
 
 //               ScanCode();
+
                startActivity(new Intent(getApplicationContext(),Student_profile.class));
 
            }
@@ -67,7 +68,6 @@ public class Scan_activity extends AppCompatActivity {
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(),result ->{
              if (result.getContents() !=null)
              {
-
                  if (result.getContents().equalsIgnoreCase("I Love You")){
 
                      startActivity(new Intent(getApplicationContext(),BonafiteCertificateForm.class));
