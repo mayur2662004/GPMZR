@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -35,8 +36,6 @@ import java.util.Map;
 
 public class StudentProfileEdit extends AppCompatActivity {
 
-    TextView date,subject,name,enrollment,branch,year;
-    String id,verify,emailId;
 
 
     WebView pdf;
@@ -51,14 +50,14 @@ public class StudentProfileEdit extends AppCompatActivity {
     String pdfURl;
     FirebaseFirestore firebaseFirestore;
 
-    Dialog dialog,dialogReject;
+    Dialog dialogReject;
+
+    TextView date,subject,name,enrollment,branch,year;
+    String id,verify,emailId;
+
+    String nameS,middleS,lastNameS;
 
 
-    MaterialButton no,yes;
-
-    TextInputEditText note;
-    MaterialButton btn;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,6 +105,10 @@ public class StudentProfileEdit extends AppCompatActivity {
             subject.setText(bundle.getString("Subject"));
             emailId= bundle.getString("UserId");
 
+            nameS = bundle.getString("Name");
+            middleS = bundle.getString("MiddleName");
+            lastNameS = bundle.getString("LastName");
+
 
         }
 
@@ -125,7 +128,9 @@ public class StudentProfileEdit extends AppCompatActivity {
             verifyImage.setImageResource(R.drawable.wrong_logo_new);
             showStatus.setText("Rejected");
             showStatus.setTextColor(Color.parseColor("#ED1D0E")); // green
+            showDialogIn();
         }
+
 
 
         StorageReference profileRef = storageReference.child("Uploads/" + id + "Bonafite.pdf");
@@ -133,17 +138,14 @@ public class StudentProfileEdit extends AppCompatActivity {
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-
                 try {
                     pdfURl = URLEncoder.encode(String.valueOf(uri),"UTF-8");
                 }
                 catch (Exception e){
                     Toast.makeText(StudentProfileEdit.this, "Url Exception : "+e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-
                 pdf.loadUrl("https://docs.google.com/gview?embedded=true&url="+pdfURl);
                 pd.dismiss();
-
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -153,6 +155,32 @@ public class StudentProfileEdit extends AppCompatActivity {
         });
 
 
+    }
+
+    private void showDialogIn() {
+        dialogReject = new Dialog(this);
+        dialogReject.setContentView(R.layout.reject_pop);
+        dialogReject.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogReject.getWindow().setBackgroundDrawable(getDrawable(R.drawable.back_background));
+        dialogReject.show();
+        MaterialButton edit = dialogReject.findViewById(R.id.edit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(StudentProfileEdit.this,BonafiteCertificateForm.class);
+                intent.putExtra("Name",nameS);
+                intent.putExtra("MiddleName",middleS);
+                intent.putExtra("LastName",lastNameS);
+                intent.putExtra("Subject",subject.getText().toString().trim());
+                intent.putExtra("EnrollmentNo",enrollment.getText().toString().trim());
+                intent.putExtra("Branch",branch.getText().toString().trim());
+                intent.putExtra("Year",year.getText().toString().trim());
+                intent.putExtra("EmailId",emailId);
+                startActivity(intent);
+
+            }
+        });
     }
 
 }

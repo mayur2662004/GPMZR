@@ -210,26 +210,20 @@ public class Approve_Activity extends AppCompatActivity {
                     String branch = y;
                     downloadPdfMultiple(branch, years);
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                     download();
             }
         });
-
     }
 
     private void downloadPdfMultiple(String branch,String sem) {
-
         pd.show();
         fStore.collection("StudentBonafiteCertificateApplicationForm")
                 .whereEqualTo("Year",sem)
@@ -242,7 +236,6 @@ public class Approve_Activity extends AppCompatActivity {
                         modelList.clear();
                         pd.dismiss();
                         refreshLayout.setRefreshing(false);
-
                         for (DocumentSnapshot doc : queryDocumentSnapshots){
                             BonafiteModel model = new BonafiteModel(
                                     doc.getString("Id"),
@@ -265,9 +258,6 @@ public class Approve_Activity extends AppCompatActivity {
                         recyclerView.setAdapter(bonafiteCertificateAdapter);
                     }
                 });
-
-
-
     }
 
     private void download() {

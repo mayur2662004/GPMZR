@@ -152,16 +152,6 @@ public class BonafiteCertificateForm extends AppCompatActivity {
             }
         });
 
-//        rg_year.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//                int radioButtonID = rg_year.getCheckedRadioButtonId();
-//                View radioButton = rg_year.findViewById(radioButtonID);
-//                int idc = rg_year.indexOfChild(radioButton);
-//                RadioButton r = (RadioButton)  rg_year.getChildAt(idc);
-//                Yearinfo = r.getText().toString().trim();
-//            }
-//        });
 
 
         //It for date
@@ -211,6 +201,18 @@ public class BonafiteCertificateForm extends AppCompatActivity {
 
         tv_date.setText(df.format(c));
 
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle!=null){
+            et_name_of_std.setText(bundle.getString("Name"));
+            et_name_of_middle.setText(bundle.getString("MiddleName"));
+            et_name_of_last.setText(bundle.getString("LastName"));
+            et_name_of_enroll_num.setText(bundle.getString("EnrollmentNo"));
+            branchinfo = bundle.getString("Branch");
+            autocomplete.setText(bundle.getString("Year"));
+            et_sub.setText(bundle.getString("Subject"));
+            emailId = bundle.getString("EmailId");
+        }
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
