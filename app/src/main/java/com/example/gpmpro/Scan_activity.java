@@ -43,7 +43,7 @@ public class Scan_activity extends AppCompatActivity {
 
 //               ScanCode();
 
-               startActivity(new Intent(getApplicationContext(),Approve_Activity.class));
+               startActivity(new Intent(getApplicationContext(),Student_profile.class));
 
            }
        });
