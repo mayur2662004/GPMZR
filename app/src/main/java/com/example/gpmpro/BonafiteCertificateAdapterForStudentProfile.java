@@ -45,6 +45,7 @@ public class BonafiteCertificateAdapterForStudentProfile extends RecyclerView.Ad
                 String enrollmentNo = modelList.get(position).getEnrollmentNo();
                 String subject = modelList.get(position).getSubject();
                 String verify = modelList.get(position).getVerify();
+                String note = modelList.get(position).getNote();
 
                 Intent intent = new Intent(adminViewBonafiteData,StudentProfileEdit.class);
                 intent.putExtra("Id",id);
@@ -57,6 +58,7 @@ public class BonafiteCertificateAdapterForStudentProfile extends RecyclerView.Ad
                 intent.putExtra("Year",year);
                 intent.putExtra("Subject",subject);
                 intent.putExtra("Verify",verify);
+                intent.putExtra("Note",note);
 
                 adminViewBonafiteData.startActivity(intent);
             }

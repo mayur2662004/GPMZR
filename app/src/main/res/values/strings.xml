@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GPM PRO</string>
+    <string name="app_name">GPMZR</string>
     <string name="username_admin">Admin</string>
     <array name="Select">
         <item>Select Semester</item>
@@ -9,7 +9,6 @@
         <item>4th sem</item>
         <item>5th sem</item>
         <item>6th sem</item>
-
     </array>
     <string name="example_autocompletetextview">Example showing AutoCompleteTextView</string>
 </resources>

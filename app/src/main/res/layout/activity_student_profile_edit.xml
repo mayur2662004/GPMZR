@@ -215,6 +215,33 @@
                     android:layout_gravity="center"
                     />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/whyRejectLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Why Rejecte?"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/whyReject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3rd"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
         </LinearLayout>
 <androidx.cardview.widget.CardView
     android:id="@+id/showPdf"

@@ -55,4 +55,7 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
+
+    // for gif viewer
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
 }

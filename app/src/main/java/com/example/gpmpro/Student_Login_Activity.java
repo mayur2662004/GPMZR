@@ -85,7 +85,7 @@ public class Student_Login_Activity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(getApplicationContext(), "Login Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),Scan_activity.class));
+                            startActivity(new Intent(getApplicationContext(),Student_profile.class));
                             finish();
                         }
                         else{
@@ -108,7 +108,7 @@ public class Student_Login_Activity extends AppCompatActivity {
         super.onStart();
 
         if (FirebaseAuth.getInstance().getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),Scan_activity.class));
+            startActivity(new Intent(getApplicationContext(),Student_profile.class));
             finish();
         }
     }

@@ -115,7 +115,6 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
                             DocumentReference documentReference = firebaseFirestore.collection("Users")
                                     .document(userId);
                             Map<String,Object> user = new HashMap<>();
-
                             user.put("Id",userId);
                             user.put("fullName",name);
                             user.put("email",email);
@@ -125,7 +124,7 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Log.d(TAG,"successes");
-                                    startActivity(new Intent(getApplicationContext(),Scan_activity.class));
+                                    startActivity(new Intent(getApplicationContext(),Student_profile.class));
                                     finish();
                                 }
                             });
@@ -148,7 +147,7 @@ public class Student_Registretoin_Activity extends AppCompatActivity {
         super.onStart();
 
         if (FirebaseAuth.getInstance().getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),Scan_activity.class));
+            startActivity(new Intent(getApplicationContext(),Student_profile.class));
             finish();
         }
     }

@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class StudentProfileEdit extends AppCompatActivity {
 
     CardView showPdf;
 
+    LinearLayout whyRejectLL;
 
     WebView pdf;
 
@@ -49,7 +51,7 @@ public class StudentProfileEdit extends AppCompatActivity {
     StorageReference storageReference;
 
     ImageView verifyImage;
-    TextView showStatus;
+    TextView showStatus,whyReject;
 
     String pdfURl;
     FirebaseFirestore firebaseFirestore;
@@ -71,6 +73,7 @@ public class StudentProfileEdit extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         date = findViewById(R.id.date);
+        whyRejectLL = findViewById(R.id.whyRejectLL);
         subject = findViewById(R.id.sub);
         name = findViewById(R.id.Name);
         enrollment = findViewById(R.id.enroll);
@@ -78,6 +81,7 @@ public class StudentProfileEdit extends AppCompatActivity {
         year = findViewById(R.id.year);
         pdf = findViewById(R.id.pdf);
         verifyImage = findViewById(R.id.verify);
+        whyReject = findViewById(R.id.whyReject);
         showStatus = findViewById(R.id.showStatus);
         pd = new ProgressDialog(this);
 
@@ -122,18 +126,21 @@ public class StudentProfileEdit extends AppCompatActivity {
             verifyImage.setImageResource(R.drawable.pending_logo);
             showStatus.setText("Pending");
             showStatus.setTextColor(Color.parseColor("#FFEB3B"));//  red
-
+            whyRejectLL.setVisibility(View.GONE);
         }
         else if (verify.equalsIgnoreCase("True")){
             verifyImage.setImageResource(R.drawable.yes_logo_new);
             showStatus.setText("Approved");
             showStatus.setTextColor(Color.parseColor("#12AD2B")); // green
+            whyRejectLL.setVisibility(View.GONE);
         }
         else if (verify.equalsIgnoreCase("Rejected")){
             verifyImage.setImageResource(R.drawable.wrong_logo_new);
             showStatus.setText("Rejected");
             showStatus.setTextColor(Color.parseColor("#ED1D0E")); // green
             showDialogIn();
+            whyRejectLL.setVisibility(View.VISIBLE);
+            whyReject.setText(bundle.getString("Note"));
         }
 
         showPdf = findViewById(R.id.showPdf);

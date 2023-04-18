@@ -286,7 +286,7 @@ public class BonafiteCertificateForm extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(BonafiteCertificateForm.this, "You Application send Successfully", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),Scan_activity.class));
+                startActivity(new Intent(getApplicationContext(),Student_profile.class));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
