@@ -15,6 +15,17 @@ In Admin panel ->
   3) If filled infromation is wrong then it will be rejected by admin and mail send to student that your bonafite applications is rejected by admin it also show why it was rejected by admin
   4) Admin has 3 section that will help admin find student appliaction
   5) Approved , Pending and Rejcted appliaction this are 3 section that admin can find easyly
-  
+
+Student Panel Images 
+
+![image](https://github.com/saurowankhade/BonafiteApplicationSystem/assets/98818353/92bccd45-6684-470d-920e-85f982ee6a32)
+
+
+
+Admin Panel Images
+
+![image](https://github.com/saurowankhade/BonafiteApplicationSystem/assets/98818353/585764c2-1328-4326-adaf-7cf6360ecbd7)
+
+
 
                       
